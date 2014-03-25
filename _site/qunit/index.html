@@ -3,11 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
+        <title>thorsent test suite</title>
         <meta name="viewport" content="width=device-width">
         <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png"/>
         <link rel="stylesheet" href="/css/syntax.css">
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/qunit-1.14.0.css">
     </head>
     <body>
         <div class="site">
@@ -16,7 +17,7 @@
               <div class="logo">
                 <a href="/">
                   <img src="/assets/images/hammer_logo.png" height="40px" width="40px" />
-                  <h1 class="title">{{ site.name }}</h1>
+                  <h1 class="title">thorsent</h1>
                 </a>
               </div>
               <ul class="top-nav">
@@ -40,7 +41,8 @@
           </div>
           <div class="content">
             <div class="content-container">
-              {{ content }}
+              <div id="qunit"></div>
+<div id="qunit-fixture"></div>
             </div>
           </div>
           <div class="footer">
@@ -51,5 +53,7 @@
         </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script type="text/javascript" src="/js/main.js"></script>
+        <script type="text/javascript" src="/js/qunit-1.14.0.js"></script>
+        <script type="text/javascript" src="/js/testSuite.js"></script>
     </body>
 </html>
