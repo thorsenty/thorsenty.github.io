@@ -73,7 +73,19 @@ a {
 }
 
 .active-drawer .site {
-  left: -80%;
+  left: -20%;
+}
+
+@media screen and (max-width: 480px) {
+  .active-drawer .site {
+    left: -50%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .active-drawer .site {
+    left: -80%;
+  }
 }
 
 .meta {
@@ -126,7 +138,6 @@ a {
 
 .header a {
   font-weight: bold;
-  text-decoration: none;
 }
 
 .title {
@@ -162,7 +173,6 @@ ul.top-nav a {
   color: #FFF;
   font-size: 1.2em;
   background: none;
-  text-decoration: none;
 }
 
 ul.top-nav a:hover,
@@ -194,19 +204,55 @@ a.ss-nav-toggle img {
 }
 
 .nav-drawer {
-  width: 80%;
-  height: 100%;
+  min-height: 100%;
   position: fixed;
   z-index: 9999;
   top: 0;
-  right: -80%;
-  background: #F7F7F7;
+  right: -20%;
+  width: 20%;
+  background: #8E8E93;
   -webkit-transition: right 0.5s;
           transition: right 0.5s;
 }
 
+@media screen and (max-width: 480px) {
+  .nav-drawer  {
+    right: -50%;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .nav-drawer  {
+    right: -80%;
+    width: 80%;
+  }
+}
+
 .active-drawer .nav-drawer {
   right: 0;
+}
+
+ul.ss-nav {
+  padding-top:50px;
+  list-style: none;
+}
+
+ul.ss-nav li {
+  border-bottom: solid 1px #C7C7CC;
+}
+
+ul.ss-nav li:first-child {
+  border-top: solid 1px #C7C7CC;
+}
+
+ul.ss-nav a {
+  display: block;
+  padding: 14px 20px;
+  color: #FFF;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: left;
 }
 
 /*****************************************************************************/
