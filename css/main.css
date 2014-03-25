@@ -64,7 +64,16 @@ a {
   text-align: justify;
   line-height: 1.5em;
   min-height:100%;
-  position:relative;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-transition: left 0.5s;
+          transition: left 0.5s;
+}
+
+.active-drawer .site {
+  left: -80%;
 }
 
 .meta {
@@ -95,7 +104,7 @@ a {
 /*****************************************************************************/
 
 .header {
-  padding: 0 10px;
+  padding-left: 10px;
   background-color: #4A4A4A;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#4A4A4A), to(#2B2B2B));
   background-image: -webkit-linear-gradient(top, #4A4A4A, #2B2B2B);
@@ -182,6 +191,22 @@ a.ss-nav-toggle {
 
 a.ss-nav-toggle img {
   display: block;
+}
+
+.nav-drawer {
+  width: 80%;
+  height: 100%;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: -80%;
+  background: #F7F7F7;
+  -webkit-transition: right 0.5s;
+          transition: right 0.5s;
+}
+
+.active-drawer .nav-drawer {
+  right: 0;
 }
 
 /*****************************************************************************/

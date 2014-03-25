@@ -1,8 +1,23 @@
+//Add global thorsent js code here.
 var Thorsent = {
-	
-	//Add global thorsent js code here.
+		
+	events: {
+
+		clickMobileNavToggle: function(event) {
+			event.preventDefault();
+			if ($('body').hasClass("active-drawer")) {
+				$('body').removeClass("active-drawer");
+			} else {
+				$('body').addClass("active-drawer");
+			}
+		}
+
+	},
+
 	init: function() {
-		console.log("Thorsent.init called.");	
+		$(".ss-nav-toggle").on("click", function(event) {
+			Thorsent.events.clickMobileNavToggle(event);
+		});
 	}	
 };
 
