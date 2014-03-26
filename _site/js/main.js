@@ -3,12 +3,11 @@ var Thorsent = {
 		
 	events: {
 
-		clickMobileNavToggle: function(event) {
-			event.preventDefault();
-			if ($('body').hasClass("active-drawer")) {
-				$('body').removeClass("active-drawer");
+		clickMobileNavToggle: function() {
+			if ($(".site-container").hasClass("active-drawer")) {
+				$(".site-container").removeClass("active-drawer");
 			} else {
-				$('body').addClass("active-drawer");
+				$(".site-container").addClass("active-drawer");
 			}
 		}
 
@@ -16,7 +15,8 @@ var Thorsent = {
 
 	init: function() {
 		$(".ss-nav-toggle").on("click", function(event) {
-			Thorsent.events.clickMobileNavToggle(event);
+			event.preventDefault();
+			Thorsent.events.clickMobileNavToggle();
 		});
 	}	
 };
