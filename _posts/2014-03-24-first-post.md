@@ -1,8 +1,7 @@
 ---
 layout: post
-title:  "Welcome to ThorsenT!"
+title:  "Welcome to thorsent!"
 date:   2014-03-24 22:13:51 -0600
-categories: news
 ---
 
 Welcome everyone,

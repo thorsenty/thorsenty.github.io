@@ -33,7 +33,7 @@ a {
   text-decoration: none;
 }
 
-//*****************************************************************************/
+/*****************************************************************************/
 /*
 /* Site
 /*
@@ -44,6 +44,7 @@ a {
   background: #8E8E93;
   overflow-y: scroll;
   overflow-x: hidden;
+  width: 100%;
   min-height: 100%;
 }
 
@@ -292,6 +293,11 @@ ul.ss-nav a {
 
 .meta {
   color: #aaa;
+}
+
+.post img {
+  max-width: 100%;
+  height: auto;
 }
 
 .post pre {

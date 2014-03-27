@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>QUnit, JavaScript Unit Testing, and TDD</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png"/>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+      <div class="site-container">
+        <div class="site">
+          <div class="header">
+            <div class="content-container">
+              <div class="logo">
+                <a href="/">
+                  <img src="/assets/images/hammer_logo.png" height="40px" width="40px" />
+                  <h1 class="title">thorsent</h1>
+                </a>
+              </div>
+              <ul class="top-nav">
+                <li>
+                  <a href="/">home</a>
+                </li>
+                <li>
+                  <a href="/blog">blog</a>
+                </li>
+                <li>
+                  <a href="/about">about</a>
+                </li>
+                <li>
+                  <a href="/contact">contact</a>
+                </li>
+              </ul>
+              <a class="ss-nav-toggle" href="#">
+                <img src="/assets/images/mobile_menu_logo.png"/>
+              </a>
+            </div>
+          </div>
+          <div class="content">
+            <div class="content-container">
+              <h2>QUnit, JavaScript Unit Testing, and TDD</h2>
+<p class="meta">27 Mar 2014</p>
+
+<div class="post">
+<p>JavaScript unit testing is probably not the sexiest subject imaginable, but as I start start to build out thorsent it seems like one worth talking about.</p>
+
+<p>Professionally, for the past six months, I have been working with a team of up to a dozen developers to build a new member portal for a large <a href="http://en.wikipedia.org/wiki/Pharmacy_benefit_management">PBM</a> using the <a href="http://www.adobe.com/solutions/web-experience-management.html">Adobe Experience Manager</a> (CQ5) platform. AEM is a content management system, and by the nature of WCMs, most of the business logic for the components we build is in JavaScript client libraries. Over time, as we rushed to build out functionality and the site became more complex, we realized that we had created some 40,000 lines of interrelated JS and had no good way to test any of it.</p>
+
+<p>After lengthy discussion, my team decided that it would be valuable to implement a unit testing framework for our JavaScript in order to ensure stability going forward. We decided to use <a href="https://qunitjs.com">QUnit</a> to build out this framework because our application made heavy use of jQuery (QUnit is/was part of the jQuery project and is used to test jQuery itself). To make a long story short, refactoring existing JS to make it unit-testable is a time consuming, and less than enjoyable task. We&#39;ve made a good start on increasing our test coverage, but still have a long way to go.</p>
+
+<p>The moral of that story is that if you&#39;re writing a JavaScript application, or rather an application that utilizes any JavaScript at all, it is worth implementing a unit testing framework from day zero. If <a href="http://www.agiledata.org/essays/tdd.html">test-driven development</a> is your cup of tea, I would highly encourage that as well.</p>
+
+<p>With this in mind, I have created a QUnit framework for thorsent. It&#39;s easy to get started. All you need is a JS file, a CSS file, and two particular div elements on a test page and you&#39;re well on your way. The QUnit <a href="http://api.qunitjs.com">API documentation</a> and <a href="http://qunitjs.com/cookbook/">cookbook</a> do a good job of laying out and explaining everything else you can do from there. As you can see below, I&#39;ve written my first test which covers a toggle function for the mobile navigation drawer.</p>
+
+<p><img src="/assets/images/qunit-initial.png" alt="QUnit Screen" title="QUnit Screen"></p>
+
+<p>I intend to use this framework to do TDD for all future JavaScript development on this site. As easy as it would be to take shortcuts working as a one man team, it is important to commit to best practices such as TDD. Regardless of your team size, being disciplined in these practices will result in cleaner code that has fewer defects and is easier to maintain. </p>
+
+</div>
+
+            </div>
+          </div>
+          <div class="footer">
+            <div class="content-container">
+              <p>&copy;2014 Ty Thorsen, all rights reserved.</p>
+            </div>
+          </div>
+        </div>
+        <div class="nav-drawer">
+          <ul class="ss-nav">
+            <li>
+              <a href="/">home</a>
+            </li>
+            <li>
+              <a href="/blog">blog</a>
+            </li>
+            <li>
+              <a href="/about">about</a>
+            </li>
+            <li>
+              <a href="/contact">contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/main.js"></script>
+    </body>
+</html>
