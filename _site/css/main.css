@@ -276,23 +276,21 @@ ul.ss-nav a {
 /*****************************************************************************/
 
 /* standard */
-.posts {
-  list-style-type: none;
-  margin-bottom: 2em;
+.posts h2 {
+  font-size: 2em;
+  font-weight: normal;
 }
 
-.posts li {
-  line-height: 1.75em;
-}
-
-.posts span {
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
+.posts p {
+  margin: 0.8em 0;
 }
 
 .meta {
   color: #aaa;
+}
+
+.posts .post {
+  margin-bottom: 2em;
 }
 
 .post img {
