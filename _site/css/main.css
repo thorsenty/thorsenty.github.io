@@ -278,7 +278,9 @@ ul.ss-nav a {
 /* standard */
 .posts h2 {
   font-size: 2em;
+  line-height: 1.5em;
   font-weight: normal;
+  text-align: left;
 }
 
 .posts p {
