@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Welcome to thorsent!"
-date:   2014-03-24 22:13:51 -0600
+date:   2014-03-24 22:13:51
 ---
 
 Welcome everyone,
