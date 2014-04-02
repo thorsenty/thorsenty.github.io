@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
+      <input id="page-url" type="hidden" value="/blog/2014/03/26/qunit/">
       <div class="site-container">
         <div class="site">
           <div class="header">
@@ -60,6 +61,19 @@
 
 <p>I intend to use this framework to do TDD for all future JavaScript development on this site. As easy as it would be to take shortcuts working as a one man team, it is important to commit to best practices such as TDD. Regardless of your team size, being disciplined in these practices will result in cleaner code that has fewer defects and is easier to maintain. </p>
 
+	<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'thorsent';
+        var disqus_identifier = document.getElementById("page-url").value;
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
             </div>

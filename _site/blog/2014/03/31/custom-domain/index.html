@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
+      <input id="page-url" type="hidden" value="/blog/2014/03/31/custom-domain/">
       <div class="site-container">
         <div class="site">
           <div class="header">
@@ -63,6 +64,19 @@
 
 <p>After allowing some time to allow your DNS changes to propagate (up to 24 hours), your custom domain should now be pointed at your GitHub Pages site.</p>
 
+	<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'thorsent';
+        var disqus_identifier = document.getElementById("page-url").value;
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
             </div>
