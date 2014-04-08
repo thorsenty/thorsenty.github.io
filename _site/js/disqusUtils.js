@@ -8,8 +8,6 @@ Thorsent.disqusUtils = {
 		this.getThreadDetails(threadId).then(function(data) {
 			if (data.code === 0) {
 				comments = data.response.posts;
-			} else {
-				console.log(data.code);
 			}
 		}, function(data) {
 			console.log("Error in thread details service for", threadId);
