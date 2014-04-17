@@ -30,7 +30,6 @@ Thorsent.testSuite = {
 	init: function() {
 		QUnit.config.autostart = false;
 		Thorsent.testSuite.execute();
-		QUnit.start();
 	}	
 };
 

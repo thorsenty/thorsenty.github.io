@@ -1,4 +1,3 @@
-//Add global thorsent js code here.
 var Thorsent = {
 		
 	events: {
