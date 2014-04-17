@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>BlanketJS for QUnit</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png"/>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+      <input id="page-url" type="hidden" value="/blog/2014/04/16/blanket-js/">
+      <div class="site-container">
+        <div class="site">
+          <div class="header">
+            <div class="content-container">
+              <div class="logo">
+                <a href="/">
+                  <img src="/assets/images/hammer_logo.png" height="40px" width="40px" />
+                  <h1 class="title">thorsent</h1>
+                </a>
+              </div>
+              <ul class="top-nav">
+                <li>
+                  <a href="/">home</a>
+                </li>
+                <li>
+                  <a href="/blog">blog</a>
+                </li>
+                <li>
+                  <a href="/about">about</a>
+                </li>
+                <li>
+                  <a href="/contact">contact</a>
+                </li>
+              </ul>
+              <a class="ss-nav-toggle" href="#">
+                <img src="/assets/images/mobile_menu_logo.png"/>
+              </a>
+            </div>
+          </div>
+          <div class="content">
+            <div class="content-container">
+              <div class="post">
+	<h2>BlanketJS for QUnit</h2>
+	<p class="meta">Posted on 16 Apr 2014 by Ty Thorsen</p>
+	<p>&#39;What is the benefit?&#39; </p>
+
+<p>This question was posed to me by a project manager today, regarding the QUnit testing framework that several colleagues and I have been building over the past few weeks. I gave him the typical spiel about how the test suite would help ensure code stablity, how the process of writing the test suite (and refactoring along the way) would reduce current technical debt, and how we could leverage the framework to do TDD in the future. That all sounds great, of course, but we need something we can show the business to help them understand that these benefits are worth the cost.</p>
+
+<!--more-->
+
+<p>It&#39;s a small something, but one thought I had was to show the business our code coverage metrics. If I can show that our test suite covers a significantly large percentage of our JS code base, it should help instill confidence that a simple running of the test suite can suffice as a smoke test of our web site. Currently, the majority of our testing is done manually. Manual testing is obviously slow. Time = money. You get the picture.</p>
+
+<p>So, back to the issue of testing code coverage. After a quick search, it was evident that <a href="http://blanketjs.org">BlanketJS</a> would be the best tool for the job. It&#39;s easy to use, configurable, and supports QUnit integration out-of-the-box.</p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/js/main.js&quot;</span> <span class="na">data-cover</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/js/qunit-1.14.0.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/js/testSuite.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/js/blanket.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+
+<p>To get started with BlanketJS in your project, all you need to do is include the blanket.min.js script after your qunit script, and then mark any scripts for which you want to test your test coverage with a <code>data-cover</code> attribute.</p>
+
+<p><img src="/assets/images/blanket-js-screen.png" alt="QUnit w/ BlanketJS Screen" title="QUnit w/ BlanketJS Screen"></p>
+
+<p>I&#39;m getting aquainted with BlanketJS by adding it to thorsent. If I visit my qunit page, I should now see an additional checkbox in the toolbar labeled &#39;Enable coverage&#39;. Check this box, and the page will reload, resulting in a view similar to the one above. BlanketJS has appended the coverage results to the qunit markup. It shows the number of statements covered out of the total number of statements in the JS, and this same metric as a percentage. If you&#39;d like to drill down into your code to see exactly which statements in each file are covered and which ones aren&#39;t, you can do that too. At 44% I&#39;m not doing so hot. But, now I know, and I can see a tangible improvement as I continue developing my test suite.</p>
+
+	<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'thorsent';
+        var disqus_identifier = document.getElementById("page-url").value;
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+            </div>
+          </div>
+          <div class="footer">
+            <div class="content-container">
+              <p>&copy;2014 Ty Thorsen, all rights reserved.</p>
+            </div>
+          </div>
+        </div>
+        <div class="nav-drawer">
+          <ul class="ss-nav">
+            <li>
+              <a href="/">home</a>
+            </li>
+            <li>
+              <a href="/blog">blog</a>
+            </li>
+            <li>
+              <a href="/about">about</a>
+            </li>
+            <li>
+              <a href="/contact">contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/main.js"></script>
+      <script type="text/javascript" src="/js/disqusUtils.js"></script>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-49818813-1', 'thorsent.com');
+        ga('send', 'pageview');
+      </script>
+    </body>
+</html>
