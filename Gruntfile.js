@@ -33,6 +33,9 @@ module.exports = function(grunt) {
       jekyllBuild: {
         command: "jekyll build --drafts"
       },
+      jekyllBuildProd: {
+        command: "jekyll build"
+      },
       jekyllServe: {
         command: "jekyll serve"
       }
@@ -48,15 +51,26 @@ module.exports = function(grunt) {
           ext: ".min.js"
         }]
       }
+    },
+
+    watch: {
+      options: {
+        livereload: true
+      },
+      css: {
+        files: ['styles/*.scss'],
+        tasks: ['sass', 'autoprefixer', 'shell:jekyllBuild']
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-shell');
 
+  grunt.registerTask('default', ['uglify', 'sass', 'autoprefixer', 'shell:jekyllBuild', 'watch']);
+  grunt.registerTask('prod', ['uglify', 'sass', 'autoprefixer', 'shell:jekyllBuildProd']);
   grunt.registerTask('serve', ['shell:jekyllServe']);
-  grunt.registerTask('default', ['uglify', 'sass', 'autoprefixer', 'shell:jekyllBuild']);
-
 };
