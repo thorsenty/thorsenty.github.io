@@ -3,7 +3,7 @@ var Thorsent = {
 	events: {
 
 		clickMobileNavToggle: function() {
-			if ($(".site-container").hasClass("active-drawer")) {
+			if ($(".site-container").is(".active-drawer")) {
 				$(".site-container").removeClass("active-drawer");
 			} else {
 				$(".site-container").addClass("active-drawer");
@@ -22,4 +22,5 @@ var Thorsent = {
 
 $(document).ready(function() {
 	Thorsent.init();
+	//what
 });

@@ -22,4 +22,4 @@ Thorsent.disqusUtils = {
 			url: endpoint
 		});
 	}
-}
+};

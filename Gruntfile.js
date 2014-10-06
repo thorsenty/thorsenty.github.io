@@ -14,6 +14,19 @@ module.exports = function(grunt) {
       }
     },
 
+    jshint: {
+      options: {
+        curly: true,
+        eqeqeq: true,
+        eqnull: true,
+        browser: true,
+        globals: {
+          jQuery: true
+        },
+      },
+      all: ['scripts/*.js']
+    },
+
     sass: {
       dist: {
         files: [{
@@ -54,23 +67,29 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      options: {
-        livereload: true
-      },
       css: {
         files: ['styles/*.scss'],
         tasks: ['sass', 'autoprefixer', 'shell:jekyllBuild']
+      },
+      js: {
+        files: ['scripts/*.js'],
+        tasks: ['uglify', 'jshint', 'shell:jekyllBuild']
+      },
+      site: {
+        files: ['**/*.html', '!_site/**/*.html', '_posts/**/*.md', '_drafts/**/*.md'],
+        tasks: ['shell:jekyllBuild']
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-shell');
 
-  grunt.registerTask('default', ['uglify', 'sass', 'autoprefixer', 'shell:jekyllBuild', 'watch']);
-  grunt.registerTask('prod', ['uglify', 'sass', 'autoprefixer', 'shell:jekyllBuildProd']);
+  grunt.registerTask('default', ['uglify', 'jshint', 'sass', 'autoprefixer', 'shell:jekyllBuild', 'watch']);
+  grunt.registerTask('prod', ['uglify', 'jshint', 'sass', 'autoprefixer', 'shell:jekyllBuildProd']);
   grunt.registerTask('serve', ['shell:jekyllServe']);
 };
