@@ -278,7 +278,14 @@ ul.ss-nav {
 /*
 /*****************************************************************************/
 
-.posts {
+.meta {
+  color: #aaa;
+}
+
+.post {
+  background: #FFF;
+  padding: 10px;
+  margin: 1em 0;
 
   h2 {
     font-size: 2em;
@@ -290,16 +297,6 @@ ul.ss-nav {
   p {
     margin: 0.8em 0;
   }
-}
-
-.meta {
-  color: #aaa;
-}
-
-.post {
-  background: #FFF;
-  padding: 10px;
-  margin: 1em 0;
 
   img {
     max-width: 100%;

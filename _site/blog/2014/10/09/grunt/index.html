@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Grunt 101: Automating the Boring (but Useful) Stuff</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png"/>
+        <link rel="stylesheet" href="/styles/vendor/syntax.css">
+        <link rel="stylesheet" href="/styles/dist/main.css">
+    </head>
+    <body>
+      <input id="page-url" type="hidden" value="/blog/2014/10/09/grunt/">
+      <div class="site-container">
+        <div class="site">
+          <div class="header">
+            <div class="content-container">
+              <div class="logo">
+                <a href="/blog/">
+                  <img src="/assets/images/hammer_logo.png" height="40px" width="40px" />
+                  <h1 class="title">thorsent</h1>
+                </a>
+              </div>
+              <!--<ul class="top-nav">
+                <li>
+                  <a href="/">home</a>
+                </li>
+                <li>
+                  <a href="/blog">blog</a>
+                </li>
+                <li>
+                  <a href="/about">about</a>
+                </li>
+                <li>
+                  <a href="/contact">contact</a>
+                </li>
+              </ul>
+              <a class="ss-nav-toggle" href="#">
+                <img src="/assets/images/mobile_menu_logo.png"/>
+              </a>-->
+            </div>
+          </div>
+          <div class="content">
+            <div class="content-container">
+              <div class="post">
+	<h2>Grunt 101: Automating the Boring (but Useful) Stuff</h2>
+	<p class="meta">Posted on 09 Oct 2014 by Ty Thorsen</p>
+	<p>I was looking through the screencasts on <a href="http://css-tricks.com">CSS-Tricks</a> the other day, and I noticed a couple of recent videos on how to use Grunt to automate various development tasks. Now, as a developer who does tasks every now and then, this seemed likes something that could be helpful. In this post I&#39;ll talk briefly about how to get started with Grunt and show you how I&#39;m starting to use it to build this site.</p>
+
+<!--more-->
+
+<p>So what is <a href="http://gruntjs.com">Grunt</a> exactly? Grunt is a task runner module that runs on <a href="http://nodejs.org">Node.js</a> that allows developers to write a simple script to automate a large number of common development tasks. These tasks are likely to be repetive tasks like compilaton, minification or css pre-processing that are certainly valuable, but can be tedious and time consuming. With Grunt you can run them all with a single command, or even set up grunt trigger tasks when certain files are updated. Automating these tasks will save time and allow you to focus on the fun parts of developing your applications.</p>
+
+<p>Getting started is a fairly painless endeavor. Grunt has an <a href="http://gruntjs.com/getting-started">easy-to-follow guide</a> on their site, but if you really want a clear walkthrough I would recommend watching <a href="http://css-tricks.com/video-screencasts/130-first-moments-grunt/">Screencast #130</a> on CSS-Tricks. Here&#39;s a quick recap of the steps I took to get things set up for my project:</p>
+
+<ol>
+<li>I had never used Node.js before so my first step was to <a href="http://nodejs.org/download">download and install</a> it.</li>
+<li><p>Next I used npm to install the Grunt Command Line Interface.
+<div class="highlight"><pre><code class="console"><span class="gp">Tys-MacBook-Pro:workspace thorsenty$</span>  npm install -g grunt-cli
+</code></pre></div></p></li>
+<li><p>Then I added the <code>package.json</code> and <code>Gruntfile.js</code> files to the root directory of my application. Proceeded to tinker with different plugins and set up a few different tasks.</p></li>
+<li><div class="highlight"><pre><code class="console"><span class="gp">Tys-MacBook-Pro:thorsenty.github.io thorsenty$</span>  grunt
+</code></pre></div></li>
+<li><p>Profit.</p></li>
+</ol>
+
+<p>Seems simple right? It really is. Let&#39;s walk through those two files I added.</p>
+
+<div class="highlight"><pre><code class="json"><span class="lineno"> 1</span> <span class="err">/*</span> <span class="err">package.json</span> <span class="err">*/</span>
+<span class="lineno"> 2</span> <span class="p">{</span>
+<span class="lineno"> 3</span>   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;thorsent&quot;</span><span class="p">,</span>
+<span class="lineno"> 4</span>   <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+<span class="lineno"> 5</span>   <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="nt">&quot;grunt&quot;</span><span class="p">:</span> <span class="s2">&quot;~0.4.5&quot;</span><span class="p">,</span>
+<span class="lineno"> 7</span>     <span class="nt">&quot;grunt-autoprefixer&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.0.1&quot;</span><span class="p">,</span>
+<span class="lineno"> 8</span>     <span class="nt">&quot;grunt-contrib-jshint&quot;</span><span class="p">:</span> <span class="s2">&quot;~0.10.0&quot;</span><span class="p">,</span>
+<span class="lineno"> 9</span>     <span class="nt">&quot;grunt-contrib-sass&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.8.1&quot;</span><span class="p">,</span>
+<span class="lineno">10</span>     <span class="nt">&quot;grunt-contrib-uglify&quot;</span><span class="p">:</span> <span class="s2">&quot;~0.5.0&quot;</span><span class="p">,</span>
+<span class="lineno">11</span>     <span class="nt">&quot;grunt-contrib-watch&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.6.1&quot;</span><span class="p">,</span>
+<span class="lineno">12</span>     <span class="nt">&quot;grunt-shell&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.1.1&quot;</span>
+<span class="lineno">13</span>   <span class="p">}</span>
+<span class="lineno">14</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>Above is my current version of <code>package.json</code>. This file is used by npm to install and mange all of the modules that Grunt uses to run the tasks I want. You see here that I&#39;m including a number of different modules, primarily related to optimizing my client-side code. Autoprefixer and SASS are for CSS related tasks, jshint and uglify help clean and optimize my Javascript files, and watch and shell are used to coordinate and execute various sets of tasks.</p>
+
+<p>Below is my <code>Gruntfile.js</code>. At the bottom you can see the three tasks I&#39;m currently using. The one I want to highlight is the &#39;default&#39; task. I run this task once when I start developing. It runs through each of the pre-processing tasks and the build task, then calls watch. Watch continues to run, and watches for files changes within my project. When an SCSS file changes, it runs the CSS pre-processors and rebuilds automatically. When a Javascript file is changed, Grunt knows to run jshint and uglify on the changed files. Any changes to site pages or blog posts are automatically rebuilt as well.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno">  1</span> <span class="cm">/* Gruntfile.js */</span>
+<span class="lineno">  2</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  3</span> 
+<span class="lineno">  4</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+<span class="lineno">  5</span>     
+<span class="lineno">  6</span>     <span class="nx">pkg</span><span class="o">:</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">readJSON</span><span class="p">(</span><span class="s1">&#39;package.json&#39;</span><span class="p">),</span>
+<span class="lineno">  7</span>     
+<span class="lineno">  8</span>     <span class="nx">autoprefixer</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">  9</span>       <span class="nx">all</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 10</span>         <span class="nx">expand</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 11</span>         <span class="nx">flatten</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 12</span>         <span class="nx">src</span><span class="o">:</span> <span class="s2">&quot;styles/*.css&quot;</span><span class="p">,</span>
+<span class="lineno"> 13</span>         <span class="nx">dest</span><span class="o">:</span> <span class="s2">&quot;styles/dist/&quot;</span>
+<span class="lineno"> 14</span>       <span class="p">}</span>
+<span class="lineno"> 15</span>     <span class="p">},</span>
+<span class="lineno"> 16</span> 
+<span class="lineno"> 17</span>     <span class="nx">jshint</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 18</span>       <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 19</span>         <span class="nx">curly</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 20</span>         <span class="nx">eqeqeq</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 21</span>         <span class="nx">eqnull</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 22</span>         <span class="nx">browser</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 23</span>         <span class="nx">globals</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 24</span>           <span class="nx">jQuery</span><span class="o">:</span> <span class="kc">true</span>
+<span class="lineno"> 25</span>         <span class="p">},</span>
+<span class="lineno"> 26</span>       <span class="p">},</span>
+<span class="lineno"> 27</span>       <span class="nx">all</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;scripts/*.js&#39;</span><span class="p">]</span>
+<span class="lineno"> 28</span>     <span class="p">},</span>
+<span class="lineno"> 29</span> 
+<span class="lineno"> 30</span>     <span class="nx">sass</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 31</span>       <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 32</span>         <span class="nx">files</span><span class="o">:</span> <span class="p">[{</span>
+<span class="lineno"> 33</span>           <span class="nx">expand</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 34</span>           <span class="nx">cwd</span><span class="o">:</span> <span class="s2">&quot;styles&quot;</span><span class="p">,</span>
+<span class="lineno"> 35</span>           <span class="nx">src</span><span class="o">:</span> <span class="s2">&quot;*.scss&quot;</span><span class="p">,</span>
+<span class="lineno"> 36</span>           <span class="nx">dest</span><span class="o">:</span> <span class="s2">&quot;styles&quot;</span><span class="p">,</span>
+<span class="lineno"> 37</span>           <span class="nx">ext</span><span class="o">:</span> <span class="s2">&quot;.css&quot;</span>
+<span class="lineno"> 38</span>         <span class="p">}],</span>
+<span class="lineno"> 39</span>         <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 40</span>           <span class="nx">style</span><span class="o">:</span> <span class="s2">&quot;compressed&quot;</span>
+<span class="lineno"> 41</span>         <span class="p">}</span>
+<span class="lineno"> 42</span>       <span class="p">}</span>
+<span class="lineno"> 43</span>     <span class="p">},</span>
+<span class="lineno"> 44</span> 
+<span class="lineno"> 45</span>     <span class="nx">shell</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 46</span>       <span class="nx">jekyllBuild</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 47</span>         <span class="nx">command</span><span class="o">:</span> <span class="s2">&quot;jekyll build --drafts&quot;</span>
+<span class="lineno"> 48</span>       <span class="p">},</span>
+<span class="lineno"> 49</span>       <span class="nx">jekyllBuildProd</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 50</span>         <span class="nx">command</span><span class="o">:</span> <span class="s2">&quot;jekyll build&quot;</span>
+<span class="lineno"> 51</span>       <span class="p">},</span>
+<span class="lineno"> 52</span>       <span class="nx">jekyllServe</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 53</span>         <span class="nx">command</span><span class="o">:</span> <span class="s2">&quot;jekyll serve&quot;</span>
+<span class="lineno"> 54</span>       <span class="p">}</span>
+<span class="lineno"> 55</span>     <span class="p">},</span>
+<span class="lineno"> 56</span>     
+<span class="lineno"> 57</span>     <span class="nx">uglify</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 58</span>       <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 59</span>         <span class="nx">files</span><span class="o">:</span> <span class="p">[{</span>
+<span class="lineno"> 60</span>           <span class="nx">expand</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 61</span>           <span class="nx">cwd</span><span class="o">:</span> <span class="s2">&quot;scripts&quot;</span><span class="p">,</span>
+<span class="lineno"> 62</span>           <span class="nx">src</span><span class="o">:</span> <span class="s2">&quot;*.js&quot;</span><span class="p">,</span>
+<span class="lineno"> 63</span>           <span class="nx">dest</span><span class="o">:</span> <span class="s2">&quot;scripts/dist&quot;</span><span class="p">,</span>
+<span class="lineno"> 64</span>           <span class="nx">ext</span><span class="o">:</span> <span class="s2">&quot;.min.js&quot;</span>
+<span class="lineno"> 65</span>         <span class="p">}]</span>
+<span class="lineno"> 66</span>       <span class="p">}</span>
+<span class="lineno"> 67</span>     <span class="p">},</span>
+<span class="lineno"> 68</span> 
+<span class="lineno"> 69</span>     <span class="nx">watch</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 70</span>       <span class="nx">css</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 71</span>         <span class="nx">files</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;styles/*.scss&#39;</span><span class="p">],</span>
+<span class="lineno"> 72</span>         <span class="nx">tasks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;sass&#39;</span><span class="p">,</span> <span class="s1">&#39;autoprefixer&#39;</span><span class="p">,</span> <span class="s1">&#39;shell:jekyllBuild&#39;</span><span class="p">]</span>
+<span class="lineno"> 73</span>       <span class="p">},</span>
+<span class="lineno"> 74</span>       <span class="nx">js</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 75</span>         <span class="nx">files</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;scripts/*.js&#39;</span><span class="p">],</span>
+<span class="lineno"> 76</span>         <span class="nx">tasks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;uglify&#39;</span><span class="p">,</span> <span class="s1">&#39;jshint&#39;</span><span class="p">,</span> <span class="s1">&#39;shell:jekyllBuild&#39;</span><span class="p">]</span>
+<span class="lineno"> 77</span>       <span class="p">},</span>
+<span class="lineno"> 78</span>       <span class="nx">site</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 79</span>         <span class="nx">files</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;**/*.html&#39;</span><span class="p">,</span> <span class="s1">&#39;!_site/**/*.html&#39;</span><span class="p">,</span> <span class="s1">&#39;_posts/**/*.md&#39;</span><span class="p">,</span> <span class="s1">&#39;_drafts/**/*.md&#39;</span><span class="p">],</span>
+<span class="lineno"> 80</span>         <span class="nx">tasks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;shell:jekyllBuild&#39;</span><span class="p">]</span>
+<span class="lineno"> 81</span>       <span class="p">}</span>
+<span class="lineno"> 82</span>     <span class="p">}</span>
+<span class="lineno"> 83</span>   <span class="p">});</span>
+<span class="lineno"> 84</span> 
+<span class="lineno"> 85</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-autoprefixer&#39;</span><span class="p">);</span>
+<span class="lineno"> 86</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-jshint&#39;</span><span class="p">);</span>
+<span class="lineno"> 87</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-sass&#39;</span><span class="p">);</span>
+<span class="lineno"> 88</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-uglify&#39;</span><span class="p">);</span>
+<span class="lineno"> 89</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-watch&#39;</span><span class="p">);</span>
+<span class="lineno"> 90</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-shell&#39;</span><span class="p">);</span>
+<span class="lineno"> 91</span> 
+<span class="lineno"> 92</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;uglify&#39;</span><span class="p">,</span> <span class="s1">&#39;jshint&#39;</span><span class="p">,</span> <span class="s1">&#39;sass&#39;</span><span class="p">,</span> <span class="s1">&#39;autoprefixer&#39;</span><span class="p">,</span> <span class="s1">&#39;shell:jekyllBuild&#39;</span><span class="p">,</span> <span class="s1">&#39;watch&#39;</span><span class="p">]);</span>
+<span class="lineno"> 93</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;prod&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;uglify&#39;</span><span class="p">,</span> <span class="s1">&#39;jshint&#39;</span><span class="p">,</span> <span class="s1">&#39;sass&#39;</span><span class="p">,</span> <span class="s1">&#39;autoprefixer&#39;</span><span class="p">,</span> <span class="s1">&#39;shell:jekyllBuildProd&#39;</span><span class="p">]);</span>
+<span class="lineno"> 94</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;serve&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;shell:jekyllServe&#39;</span><span class="p">]);</span>
+<span class="lineno"> 95</span> <span class="p">};</span>
+<span class="lineno"> 96</span> 
+<span class="lineno"> 97</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-uglify&#39;</span><span class="p">);</span>
+<span class="lineno"> 98</span> 
+<span class="lineno"> 99</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;uglify&#39;</span><span class="p">]);</span>
+<span class="lineno">100</span> <span class="p">};</span>
+</code></pre></div>
+
+<p>With Grunt watching for file changes in my project and running these tasks automatically, I&#39;m free to focus on the fun parts of developing my site. I highly recommend adding Grunt to your projects. I plan to continue to investigate new plugins and more prowerful ways to utilize this awesome tool.</p>
+
+	<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'thorsent';
+        var disqus_identifier = document.getElementById("page-url").value;
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+            </div>
+          </div>
+          <div class="footer">
+            <div class="content-container">
+              <p>&copy;2014 Ty Thorsen, all rights reserved.</p>
+            </div>
+          </div>
+        </div>
+        <div class="nav-drawer">
+          <ul class="ss-nav">
+            <li>
+              <a href="/">home</a>
+            </li>
+            <li>
+              <a href="/blog">blog</a>
+            </li>
+            <li>
+              <a href="/about">about</a>
+            </li>
+            <li>
+              <a href="/contact">contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/scripts/dist/main.min.js"></script>
+      <script type="text/javascript" src="/scripts/dist/disqusUtils.min.js"></script>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-49818813-1', 'thorsent.com');
+        ga('send', 'pageview');
+      </script>
+    </body>
+</html>
