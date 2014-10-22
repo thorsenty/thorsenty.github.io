@@ -1,0 +1,47 @@
+@import 'partials/variables';
+@import 'partials/formControls';
+
+#ipsum-header {
+	background: #C7C7C7;
+	height: 200px;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+#ipsum-main {
+	box-shadow: 0px -3px 3px rgba(0, 0, 0, 0.23);
+}
+
+#ipsum-controls {
+
+	@media screen and (min-width: 48em) {
+		float: left;
+		width: 30%;
+	}
+
+	& > div {
+		margin: 1em 0 1em 1em;
+		padding: 0.5em 1em;
+		background: #FFF;
+		text-align: left;
+	}
+}
+
+#ipsum-container {
+
+	@media screen and (min-width: 48em) {
+		float: left;
+		width: 70%;
+	}
+
+	p {
+		background: #FFF;
+		padding: 0.5em 1em;
+		margin: 1em;
+		text-align: left;
+	}
+}

@@ -12,6 +12,11 @@
 
 html { 
   -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 html, body { 
@@ -19,10 +24,12 @@ html, body {
 }
 
 body {
-  background-color: #FFF;
+  background-color: #F7F7F7;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
-  font-size: small;
+  font-size: 16px;
+  color: rgba(0,0,0,0.87);
+  line-height: 1.25em;
   text-align: center;
 }
 
@@ -35,6 +42,15 @@ p { margin: 1em 0; }
 a { 
   color: #007AFF; 
   text-decoration: none;
+}
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after  {
+  clear: both;
 }
 
 /*****************************************************************************/

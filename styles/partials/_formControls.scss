@@ -1,0 +1,136 @@
+div.form-row {
+	margin: 1em 0;
+}
+
+button, input, select, textarea {
+  font-family : inherit;
+  font-size   : 100%;
+}
+
+button {
+	padding: 0.5em 1em;
+	background: none;
+	border: none;
+	border-radius: 2px;
+
+	&.primary {
+		color: $color-primary;
+	}
+
+	&:hover {
+		cursor: pointer;
+		background: rgba(0,0,0,0.05);
+	}
+
+	&:focus {
+		outline: none;
+		background: rgba(0,0,0,0.05);
+	}
+
+	&:active {
+		background: rgba(0,0,0,0.1);
+	}
+
+	&:disabled {
+		color: $color-dark-26;
+		background: none;
+		cursor: auto;
+	}
+}
+
+input[type='text'] {
+	padding: 0.5em 0.5em 0.1875em;
+	margin-bottom: 0.25em;
+	border: none;
+	border-bottom: 1px solid $color-dark-26;
+	-webkit-background-clip: padding;
+	   -moz-background-clip: padding;
+  	        background-clip: padding-box; 
+
+	&:focus {
+		outline: none;
+		border-bottom-color: $color-primary;
+		box-shadow: 0 1px 0 0 $color-primary-light;
+	}
+}
+
+::-webkit-input-placeholder {
+    color: $color-dark-26;
+}
+:-moz-placeholder {
+   color: $color-dark-26;
+}
+::-moz-placeholder {
+   color: $color-dark-26;
+}
+:-ms-input-placeholder {
+   color: $color-dark-26;
+}
+
+.material-select {
+	display: inline-block;
+	position: relative;
+
+	.select {
+		display: inline-block;
+
+		div {
+			color: $color-dark-87;
+			padding: 0.5em 2em 0.1875em 0.5em;
+			margin-bottom: 0.25em;
+			border-bottom: 1px solid $color-dark-26;
+			position: relative;
+
+			&:hover {
+				cursor: pointer;
+			}
+
+			&:focus {
+				outline: none;
+				border-bottom-color: $color-primary;
+				box-shadow: 0 1px 0 0 $color-primary-light;
+			}
+		}
+
+		.selected-text {
+			display: inline-block;
+		}
+
+		.caret {
+			color: $color-dark-26;
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 0.5em 0.25em 0.1875em 0.5em;
+		}
+	}
+
+	.options {
+		display: none;
+
+		li {
+			list-style: none;
+
+			span {
+				display: block;
+				padding: 0.5em;
+				color: $color-dark-87;
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	&.open .options {
+		display: block;
+		background: #FFF;
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+
