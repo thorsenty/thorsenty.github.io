@@ -16,12 +16,24 @@
 	    		$(event.currentTarget).closest(".material-select").toggleClass("open");
 	    	});
 
+	    	$container.find(".select > div").on("keypress", function(event) {
+	    		if (event.which === $.ui.keyCode.ENTER) {
+	    			$(event.currentTarget).closest(".select").click();
+	    		}
+	    	});
+
 	    	$container.find("ul li span").on("click", function(event) {
 	    		that.element.val($(event.currentTarget).attr("value"));
 	    		var container = $(event.currentTarget).closest(".material-select");
 	    		$container.find(".selected-text").text($(event.currentTarget).text());
 	    		$container.removeClass("open");
 	    		$container.find(".select div").focus();
+	    	});
+
+	    	$container.find("ul li").on("keypress", function(event) { 
+	    		if (event.which === $.ui.keyCode.ENTER) {
+	    			$(event.currentTarget).find("span").click();
+	    		}
 	    	});
 	    },
 
@@ -41,6 +53,9 @@
 	        });
 	        this._setMinWidth($select.find(".selected-text"));
 	        $select.find(".selected-text").text(element.find("option:selected").text());
+	        if (this.element.is(".full-width")) {
+	        	element.closest(".material-select").addClass("full-width");
+	        }
 	        this._bindEvents(element.closest(".material-select"));
 	        this.element.hide();
 	    },
@@ -55,8 +70,8 @@
 	    },
 
 	    val: function( value ) {
-	 
-	        if ( value === undefined ) {
+
+	    	if ( value === undefined ) {
 	            return this.element.val();
 	        }
 	 

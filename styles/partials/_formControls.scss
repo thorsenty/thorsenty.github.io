@@ -1,5 +1,13 @@
 div.form-row {
 	margin: 1em 0;
+
+	label {
+		display: block;
+		font-size: 0.6875em;
+		line-height: 1.3em;
+		margin-left: 0.727em;
+		color: $color-dark-54;
+	}
 }
 
 button, input, select, textarea {
@@ -40,17 +48,26 @@ button {
 
 input[type='text'] {
 	padding: 0.5em 0.5em 0.1875em;
+	width: 100%;
 	margin-bottom: 0.25em;
 	border: none;
 	border-bottom: 1px solid $color-dark-26;
 	-webkit-background-clip: padding;
 	   -moz-background-clip: padding;
-  	        background-clip: padding-box; 
+  	        background-clip: padding-box;
+
+  	@media screen and (min-width: 37.5em) {
+		width: auto;
+	} 	        
 
 	&:focus {
 		outline: none;
 		border-bottom-color: $color-primary;
 		box-shadow: 0 1px 0 0 $color-primary-light;
+	}
+
+	&.full-width {
+		width: 100%;
 	}
 }
 
@@ -68,11 +85,27 @@ input[type='text'] {
 }
 
 .material-select {
-	display: inline-block;
+	display: block;
 	position: relative;
 
-	.select {
+	@media screen and (min-width: 37.5em) {
 		display: inline-block;
+	} 
+
+	&.full-width {
+		display: block;
+
+		.select {
+			display: block;
+		}
+	}
+
+	.select {
+		display: block;
+
+		@media screen and (min-width: 37.5em) {
+			display: inline-block;
+		} 
 
 		div {
 			color: $color-dark-87;

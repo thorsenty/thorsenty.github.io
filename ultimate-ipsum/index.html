@@ -2,28 +2,47 @@
 layout: ultimateIpsum
 title: Ultimate Ipsum
 ---
-
-<div id="ipsum-header">
-	<img src="/assets/images/ulti_ipsum_banner.jpg"/>
-</div>
-<div id="ipsum-main">
-	<div class="content-container clearfix">
-		<div id="ipsum-controls">
-			<div class="card card-2">
-				<div class="form-row">
-					<select id="ipsum-include-latin">
-						<option value="false">Everything Ultimate</option>
-						<option value="true">Ultimate and Latin</option>
-					</select>
-				</div>
-				<div class="form-row">
-					<input id="ipsum-para-count" type="text" placeholder="3"/>
-				</div>
-				<div class="form-row">
-					<button id="ipsum-generate" class="button primary">Generate</button>
+<div class="ulti-ipsum">
+	<div class="header-bg">
+		<img srcset="/assets/images/ulti_ipsum_banner_xl.jpg 1600w,
+					/assets/images/ulti_ipsum_banner_large.jpg 960w,
+					/assets/images/ulti_ipsum_banner_medium.jpg 768w,
+					/assets/images/ulti_ipsum_banner_small.jpg 600w" 
+			sizes="100%"
+			alt="Photo by Christina Schmidt for UlitPhotos.com" 
+			title="Photo by Christina Schmidt for UlitPhotos.com"/>
+		<div class="header-main">
+			<div>
+				<div>
+					<div class="shim card">
+						<h1>Ulti Ipsum</h1>
+						<p>Filler Text for the Flatball Enthusiast</p>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div id="ipsum-container"></div>
+	</div>
+	<div class="main">
+		<div class="content-container clearfix">
+			<div id="ipsum-controls" class="controls">
+				<div class="card card-2">
+					<div class="form-row">
+						<label for="ipsum-include-latin">Text Type</label>
+						<select id="ipsum-include-latin" class="full-width">
+							<option value="true">Ultimate and Latin</option>
+							<option value="false">Everything Ultimate</option>
+						</select>
+					</div>
+					<div class="form-row">
+						<label for="ipsum-para-count">Paragraphs</label>
+						<input id="ipsum-para-count" type="text" placeholder="3" class="full-width"/>
+					</div>
+					<div class="form-row">
+						<button id="ipsum-generate" class="button primary">Generate</button>
+					</div>
+				</div>
+			</div>
+			<div id="ipsum-container"></div>
+		</div>
 	</div>
 </div>

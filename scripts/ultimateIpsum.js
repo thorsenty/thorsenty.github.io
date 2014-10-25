@@ -6,7 +6,7 @@ Thorsent.UltimateIpsum = {
 	PARAGRAPH_LENGTH_VARIANCE: 2,
 	SENTENCE_LENGTH_BASE: 6,
 	SENTENCE_LENGTH_VARIANCE: 12,
-	ULTIMATE: ["Revolver", "Doublewide", "PoNY", "Praire Fire", "Machine", "Rhino", "Sub Zero", "Truck Stop", "Sockeye", "Ring of Fire", "GOAT", "Temper", "Ironside", "Johnny Bravo", "Chain Lightning", "Furious George", "Brute Squad", "Ozone", "Schwa", "Capitals", "Riot", "Nightlock", "Heist", "Green Means Go", "Fury", "Traffic", "Showdown", "Underground", "Scandal", "Molly Brown", "Nemesis", "Tabby Rosa", "Polar Bears", "Bucket", "Seattle Mixed", "American BBQ", "Drag’n Thrust", "Slow White", "D’oh Abides", "Santa Maria", "CLX", "7 Figures", "AMP", "Cosa Nostra", "Blackbird", "Mischief", "Wild Card", "The Administrators"],
+	ULTIMATE: ["7 Figures", "AMP", "American BBQ", "Blackbird", "Brute Squad", "Bucket", "CLX", "Callahan", "Capitals", "Chain Lightning", "Cosa Nostra", "D", "Doublewide", "Drag’n Thrust", "D’oh Abides", "FIRE", "Furious George", "Fury", "GOAT", "Green Means Go", "Heist", "Ironside", "Johnny Bravo", "Machine", "Mischief", "Molly Brown", "Nemesis", "Nightlock", "Ozone", "PoNY", "Polar Bears", "Praire Fire", "Revolver", "Rhino", "Ring of Fire", "Riot", "Santa Maria", "Scandal", "Schwa", "Seattle Mixed", "Showdown", "Slow White", "Sockeye", "Sub Zero", "Tabby Rosa", "Temper", "the Administrators", "Traffic", "Truck Stop", "Underground", "Wild Card", "air bounce", "around", "away", "backhand", "bid", "blade", "bladey", "bookends", "break", "brick", "callahan", "calling lines", "catch", "check feet", "chilly", "clearing out", "clogging", "conservation of greatness", "contact", "contest", "cup", "cut", "cutter", "cutting", "deep", "deep cut", "disc", "double team", "dump", "elite", "endzone", "fake", "fast count", "field", "flatball", "flick", "flick pull", "flip", "flip for color", "foot block", "force", "force middle", "forcing", "foul", "game to go", "goal", "gratuitous", "greatest", "hammer", "hand block", "handle", "handler", "hard cap", "heckle", "heckling", "high-release", "ho stack", "home", "horizontal", "hosptial pass", "huck", "hucking", "hucks", "inside", "inside-out", "intimi-d", "iso", "lay out", "layout", "lays out", "mac", "man", "mark", "mid", "mismatch", "natties", "offsides", "out", "outside-in", "pancake", "pick", "pick-up", "pivot", "pivoting", "poach", "poaching", "point", "popper", "popping", "pro", "pull", "puller", "pulling", "push pass", "regionals", "run", "run through", "running", "savage", "scoober", "score", "sectionals", "select", "skied", "sky", "soft cap", "spirit", "spirit circle", "spirit foul", "spirit of the game", "sprints", "stack", "stall", "stalling", "strike", "strip", "swing", "throw", "trap", "trapping line", "travel", "turn", "turnover", "under cut", "universe", "vert stack", "violation", "zone"],
 
 	$ipsumContainer: null,
 	$includeLatin: null,
@@ -16,6 +16,7 @@ Thorsent.UltimateIpsum = {
 
 		if (!$.isNumeric(paragraphCount) || paragraphCount < 1) {
 			paragraphCount = Thorsent.UltimateIpsum.PARAGRAPH_COUNT_DEFAULT;
+			$("#ipsum-para-count").val("");
 		}
 		
 		Thorsent.UltimateIpsum.activeWordList = $.merge([], Thorsent.UltimateIpsum.ULTIMATE);
@@ -77,13 +78,30 @@ Thorsent.UltimateIpsum = {
 		$("#ipsum-controls").on("click", "#ipsum-generate", function(event) {
 			Thorsent.UltimateIpsum.Events.generateClick(event);
 		});
+
+		$("#ipsum-controls").on("keypress", "#ipsum-para-count", function(event) {
+			if (event.which === $.ui.keyCode.ENTER) {
+    			$("#ipsum-generate").click();
+    		}
+		});
+
+		$(window).on("scroll", function(event) {
+			if ($(window).scrollTop() >= 0) {
+				var top = ($(window).scrollTop() / 2).toString() + "px";
+				$(".header-bg img").css({top: top});
+				var opacity = ($(".header-bg").height() - $(window).scrollTop()) / $(".header-bg").height();
+				if (opacity >= 0 && opacity <= 1) {
+					$(".header-bg .shim").css({opacity: opacity});
+				}
+			}
+		});
 	},
 
 	init: function() {
 		Thorsent.UltimateIpsum.$ipsumContainer = $("#ipsum-container");
 		Thorsent.UltimateIpsum.$includeLatin = $("#ipsum-include-latin").select().data("material-select");
 		Thorsent.UltimateIpsum.bindEvents();
-		Thorsent.UltimateIpsum.generateIpsum(3, false);
+		Thorsent.UltimateIpsum.generateIpsum(3, true);
 	}
 };
 
