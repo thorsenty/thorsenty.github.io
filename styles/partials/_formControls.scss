@@ -46,7 +46,8 @@ button {
 	}
 }
 
-input[type='text'] {
+input[type='text'],
+input[type='number'] {
 	padding: 0.5em 0.5em 0.1875em;
 	width: 100%;
 	margin-bottom: 0.25em;
