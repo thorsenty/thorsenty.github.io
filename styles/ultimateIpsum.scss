@@ -36,7 +36,7 @@
 
 					.shim {
 						display: inline-block;
-						background: rgba(0,0,0,0.23);
+						background: $color-dark-26;
 						padding: 1em 2em;
 						color: $color-light;
 						font-weight: bold;
@@ -75,8 +75,56 @@
 	}
 
 	.main {
-		position: relative;
-		margin: 1em 0;
+		border-bottom: 2px solid $color-dark-26;
+		padding-bottom: 1em;
+	}
+
+	.ipsum-footer {
+		background: $color-primary;
+		color: $color-light;
+		padding-top: 1em;
+
+		.half > div {
+			padding: 0.5em;
+			display: inline-block;
+
+			@media screen and (min-width: 48em) {
+				text-align: left;
+			}
+
+			h2 {
+				margin-bottom: 0.5em;
+			}
+
+			p {
+				margin: 0.25em 0;
+			}
+		}
+
+		a {
+			color: $color-light;
+			text-decoration: underline;
+		}
+
+		.badges {
+			padding: 0.5em;
+
+			a {
+				text-decoration: none;
+			}
+
+			img {
+				width: 100px;
+				height: auto;
+				margin: 0 1em;
+			}
+		}
+
+		.copyright {
+			padding: 1em;
+			margin: 0;
+			font-size: 0.75em;
+		}
 	}
 }
 
