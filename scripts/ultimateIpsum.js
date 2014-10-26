@@ -26,7 +26,7 @@ Thorsent.UltimateIpsum = {
 
 		Thorsent.UltimateIpsum.$ipsumContainer.empty();
 		for (var i = paragraphCount; i > 0; i--) {
-			Thorsent.UltimateIpsum.$ipsumContainer.append($("<p></p>").addClass("card card-2").text(Thorsent.UltimateIpsum.generateParagraph(includeTags, i === paragraphCount && beginWith)));
+			Thorsent.UltimateIpsum.$ipsumContainer.append($("<p></p>").text(Thorsent.UltimateIpsum.generateParagraph(includeTags, i === paragraphCount && beginWith)));
 		}
 	},
 
@@ -109,7 +109,7 @@ Thorsent.UltimateIpsum = {
 	},
 
 	init: function() {
-		Thorsent.UltimateIpsum.$ipsumContainer = $("#ipsum-container");
+		Thorsent.UltimateIpsum.$ipsumContainer = $("#ipsum-container div");
 		Thorsent.UltimateIpsum.$includeLatin = $("#ipsum-include-latin").select().data("material-select");
 		Thorsent.UltimateIpsum.bindEvents();
 		Thorsent.UltimateIpsum.generateIpsum(3, true, false, false);
