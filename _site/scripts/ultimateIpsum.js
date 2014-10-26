@@ -40,7 +40,7 @@ Thorsent.UltimateIpsum = {
 			paragraph += Thorsent.UltimateIpsum.generateSentence(i === length && beginWith) + " ";
 		}
 		if (includeTags) {
-			paragraph +=  paragraph.trim() + "</p>";
+			paragraph = paragraph.trim() + "</p>";
 		}
 		return paragraph.trim();
 	},
