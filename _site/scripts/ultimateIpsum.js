@@ -12,7 +12,7 @@ Thorsent.UltimateIpsum = {
 	$includeLatin: null,
 	activeWordList: [],
 
-	generateIpsum: function(paragraphCount, includeLatin) {
+	generateIpsum: function(paragraphCount, includeLatin, includeTags, beginWith) {
 
 		if (!$.isNumeric(paragraphCount) || paragraphCount < 1) {
 			paragraphCount = Thorsent.UltimateIpsum.PARAGRAPH_COUNT_DEFAULT;
@@ -26,26 +26,35 @@ Thorsent.UltimateIpsum = {
 
 		Thorsent.UltimateIpsum.$ipsumContainer.empty();
 		for (var i = paragraphCount; i > 0; i--) {
-			Thorsent.UltimateIpsum.$ipsumContainer.append($("<p></p>").addClass("card card-2").text(Thorsent.UltimateIpsum.generateParagraph()));
+			Thorsent.UltimateIpsum.$ipsumContainer.append($("<p></p>").addClass("card card-2").text(Thorsent.UltimateIpsum.generateParagraph(includeTags, i === paragraphCount && beginWith)));
 		}
 	},
 
-	generateParagraph: function() {
+	generateParagraph: function(includeTags, beginWith) {
 		var paragraph = "";
+		if (includeTags) {
+			paragraph += "<p>";
+		}
 		var length = Math.floor(Math.random() * Thorsent.UltimateIpsum.PARAGRAPH_LENGTH_VARIANCE + Thorsent.UltimateIpsum.PARAGRAPH_LENGTH_BASE);
 		for (var i = length; i > 0; i--) {
-			paragraph += Thorsent.UltimateIpsum.generateSentence() + " ";
+			paragraph += Thorsent.UltimateIpsum.generateSentence(i === length && beginWith) + " ";
+		}
+		if (includeTags) {
+			paragraph +=  paragraph.trim() + "</p>";
 		}
 		return paragraph.trim();
 	},
 
-	generateSentence: function() {
+	generateSentence: function(beginWith) {
 		var sentence = "";
 		var length = Math.floor(Math.random() * Thorsent.UltimateIpsum.SENTENCE_LENGTH_VARIANCE + Thorsent.UltimateIpsum.SENTENCE_LENGTH_BASE);
+		if (beginWith) {
+			sentence = "Ulti ipsum dolor amet ";
+		}
 		for (var i = length; i > 0; i--) {
 			var word = Thorsent.UltimateIpsum.getRandomWord();
 			// Capitalize start of sentence
-			if (i === length) {
+			if (i === length && !beginWith) {
 				word = word.charAt(0).toUpperCase() + word.substring(1);
 			}
 			// Randomly add a comma
@@ -69,7 +78,9 @@ Thorsent.UltimateIpsum = {
 		generateClick: function(event) {
 			var paragraphs = parseInt($("#ipsum-para-count").val(), 10);
 			var includeLatin = $("#ipsum-include-latin").val() === "true";
-			Thorsent.UltimateIpsum.generateIpsum(paragraphs, includeLatin);
+			var includeTags = $("#ipsum-para-tags").is(":checked");
+			var beginWith = $("#ipsum-begin-with").is(":checked");
+			Thorsent.UltimateIpsum.generateIpsum(paragraphs, includeLatin, includeTags, beginWith);
 		}
 	},
 
@@ -101,7 +112,7 @@ Thorsent.UltimateIpsum = {
 		Thorsent.UltimateIpsum.$ipsumContainer = $("#ipsum-container");
 		Thorsent.UltimateIpsum.$includeLatin = $("#ipsum-include-latin").select().data("material-select");
 		Thorsent.UltimateIpsum.bindEvents();
-		Thorsent.UltimateIpsum.generateIpsum(3, true);
+		Thorsent.UltimateIpsum.generateIpsum(3, true, false, false);
 	}
 };
 

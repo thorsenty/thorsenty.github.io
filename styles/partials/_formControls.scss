@@ -7,6 +7,11 @@ div.form-row {
 		line-height: 1.3em;
 		margin-left: 0.727em;
 		color: $color-dark-54;
+	
+		&.inline {
+			display: inline;
+			font-size: 0.75em;
+		}
 	}
 }
 
@@ -43,6 +48,31 @@ button {
 		color: $color-dark-26;
 		background: none;
 		cursor: auto;
+	}
+}
+
+input[type='checkbox'] {
+	display: none;
+}
+
+label.checkbox {
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	&:before {
+		content: "\f096";
+		font-family: FontAwesome;
+		font-size: 1.5em;
+		margin-right: 0.55em;
+		vertical-align: -0.125em;
+
+		input[type='checkbox']:checked + & {
+			color: $color-primary;
+			content: "\f14a";
+			margin-right: 0.5em;
+		}
 	}
 }
 

@@ -46,7 +46,15 @@
 					</div>
 					<div class="form-row">
 						<label for="ipsum-para-count">Paragraphs</label>
-						<input id="ipsum-para-count" type="text" placeholder="3" class="full-width"/>
+						<input id="ipsum-para-count" type="number" placeholder="3" value="3"  min="1" class="full-width"/>
+					</div>
+					<div class="form-row">
+						<input id="ipsum-para-tags" type="checkbox"/>
+						<label class="inline checkbox" f for="ipsum-para-tags">Include Paragraph Tags</label>
+					</div>
+					<div class="form-row">
+						<input id="ipsum-begin-with" type="checkbox">
+						<label class="inline checkbox" for="ipsum-begin-with">Begin with "Ulti ipsum..."</label>
 					</div>
 					<div class="form-row">
 						<button id="ipsum-generate" class="button primary">Generate</button>
