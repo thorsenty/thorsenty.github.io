@@ -59,6 +59,10 @@ label.checkbox {
 
 	&:hover {
 		cursor: pointer;
+
+		&:before {
+			color: $color-primary;
+		}
 	}
 
 	&:before {
