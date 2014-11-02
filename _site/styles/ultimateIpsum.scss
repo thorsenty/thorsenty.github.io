@@ -32,10 +32,9 @@
 
 				& > div {
 					display: table-cell;
-					vertical-align: middle;
+					vertical-align: bottom;
 
 					.shim {
-						display: inline-block;
 						background: $color-dark-26;
 						padding: 1em 2em;
 						color: $color-light;

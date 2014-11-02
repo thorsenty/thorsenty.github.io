@@ -98,8 +98,6 @@ Thorsent.UltimateIpsum = {
 
 		$(window).on("scroll", function(event) {
 			if ($(window).scrollTop() >= 0) {
-				var top = ($(window).scrollTop() / 2).toString() + "px";
-				$(".header-bg img").css({top: top});
 				var opacity = ($(".header-bg").height() - $(window).scrollTop()) / $(".header-bg").height();
 				if (opacity >= 0 && opacity <= 1) {
 					$(".header-bg .shim").css({opacity: opacity});
