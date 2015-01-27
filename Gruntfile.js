@@ -4,15 +4,6 @@ module.exports = function(grunt) {
     
     pkg: grunt.file.readJSON('package.json'),
     
-    autoprefixer: {
-      all: {
-        expand: true,
-        flatten: true,
-        src: "styles/*.css",
-        dest: "styles/dist/"
-      }
-    },
-
     jshint: {
       options: {
         curly: true,
@@ -27,6 +18,18 @@ module.exports = function(grunt) {
     },
 
     sass: {
+      dev: {
+        files: [{
+          expand: true,
+          cwd: "styles",
+          src: "*.scss",
+          dest: "styles",
+          ext: ".css"
+        }],
+        options: {
+          style: "expanded"
+        }
+      },
       dist: {
         files: [{
           expand: true,
@@ -68,11 +71,11 @@ module.exports = function(grunt) {
     watch: {
       css: {
         files: ['styles/**/*.scss'],
-        tasks: ['sass', 'autoprefixer', 'shell:jekyllBuild']
+        tasks: ['sass:dev', 'shell:jekyllBuild']
       },
       js: {
         files: ['scripts/*.js'],
-        tasks: ['uglify', 'jshint', 'shell:jekyllBuild']
+        tasks: [ 'jshint', 'uglify', 'shell:jekyllBuild']
       },
       site: {
         files: ['**/*.html', '!_site/**/*.html', '_posts/**/*.md', '_drafts/**/*.md'],
@@ -81,14 +84,13 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-shell');
 
-  grunt.registerTask('default', ['uglify', 'jshint', 'sass', 'autoprefixer', 'shell:jekyllBuild', 'watch']);
-  grunt.registerTask('prod', ['uglify', 'jshint', 'sass', 'autoprefixer', 'shell:jekyllBuildProd']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'sass:dev', 'shell:jekyllBuild', 'watch']);
+  grunt.registerTask('prod', ['uglify', 'jshint', 'sass:dist', 'shell:jekyllBuildProd']);
   grunt.registerTask('serve', ['shell:jekyllServe']);
 };
