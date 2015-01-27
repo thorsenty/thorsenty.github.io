@@ -1,5 +1,5 @@
 (function(window, angular, undefined) {
-  angular.module('thorsent', ['ngRoute'])
+  angular.module('thorsent', ['ngRoute', 'ngMaterial'])
 
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider

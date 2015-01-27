@@ -1,5 +1,12 @@
-<h1>Landing View</h1>
-<input ng-model="roomId" type="text" placeholder="Enter a room number">
-<button ng-click="joinRoom()">Join Room</button>
-<br/>
-<button ng-click="newRoom()">Create New Room</button>
+<md-content>
+	<section layout="row" layout-sm="column" layout-align="center center">
+		<md-input-container>
+		  <label>Room Number</label>
+		  <input ng-model="roomId" type="text">
+		</md-input-container>
+		<md-button class="md-primary" ng-click="joinRoom()">Join Room</md-button>
+	</section>
+  <section layout="row" layout-sm="column" layout-align="center center">
+		<md-button ng-click="newRoom()">Create New Room</md-button>
+	</section>
+</md-content>
