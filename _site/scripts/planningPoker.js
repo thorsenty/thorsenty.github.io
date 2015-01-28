@@ -1,5 +1,8 @@
 (function(window, angular, undefined) {
-  angular.module('thorsent', ['ngRoute', 'ngMaterial'])
+
+  var firebase = new Firebase("https://sweltering-torch-73.firebaseio.com/");
+
+  angular.module('thorsent', ['ngRoute', 'ngMaterial', 'firebase'])
 
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider
@@ -16,21 +19,64 @@
         });
     }])
 
-    .controller("LandingCtrl", ["$scope", "$location", function($scope, $location) {
+    .factory('Room', ['$firebase', function($firebase) {
+      return function(roomId) {
+        var ref = firebase.child('rooms').child(roomId);
+        return $firebase(ref).$asObject();
+      };
+    }])
+
+    .factory('RoomHelper', ['$q', function($q) {
+      return {
+        checkIfRoomExists: function(roomId) {
+          var deferred = $q.defer();
+
+          firebase.child('rooms').child(roomId).once('value', function(snapshot) {
+            exists = (snapshot.val() !== null);
+            deferred.resolve(exists);
+          });
+
+          return deferred.promise;
+        },
+
+        randomRoomId: function() {
+          return Math.floor((Math.random() * 99900000) + 100000).toString();
+        }
+      };
+    }])
+
+    .controller("LandingCtrl", ["$scope", "$location", "$firebase", "RoomHelper", function($scope, $location, $firebase, RoomHelper) {
+      
+      var fb_rooms = $firebase(firebase.child('rooms'));
+
       $scope.joinRoom = function() {
         $location.path("/"+$scope.roomId);
       };
 
       $scope.newRoom = function() {
-        $location.path("/"+randomRoomId());
+        var newRoomId = RoomHelper.randomRoomId();
+        var fb_newRoom = $firebase(firebase.child('rooms').child(newRoomId));
+        fb_newRoom.$set({roomId: newRoomId});
+        $location.path("/"+newRoomId);
       };
     }])
 
-    .controller("RoomCtrl", ["$scope", "$routeParams", function($scope, $routeParams) {
-      $scope.roomId = $routeParams.roomId;
+    .controller("RoomCtrl", ["$scope", "$routeParams", "$location", "Room", "RoomHelper", function($scope, $routeParams, $location, Room, RoomHelper) {
+      var roomId = $routeParams.roomId;
+      RoomHelper.checkIfRoomExists(roomId).then(function(exists) {
+        if (exists) {
+          $scope.room = Room(roomId);
+        } else {
+          $location.path("/");
+        }
+      });
     }]);
 
-  function randomRoomId() {
-    return Math.floor((Math.random() * 900000) + 100000);
+  function checkIfRoomExists(roomId) {
+    var exists = false;
+    return firebase.child('rooms').child(roomId).once('value', function(snapshot) {
+      exists = (snapshot.val() !== null);
+    });
   }
+
 })(window, window.angular);
