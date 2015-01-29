@@ -240,11 +240,23 @@
         getRoom: function(roomId) {
           var ref = firebase.child('rooms').child(roomId);
           return $firebase(ref).$asObject();
+        },
+
+        getUser: function(roomId, uuid) {
+          var ref = firebase.child('rooms').child(roomId).child('users').child(uuid);
+          return $firebase(ref).$asObject();
+        },
+
+        newUser: function(roomId, uuid, leader) {
+          $firebase(firebase.child('rooms').child(roomId).child('users').child(uuid)).$set({
+            leader: leader,
+            voter: true
+          });
         }
       };
     }])
 
-    .controller("LandingCtrl", ["$scope", "$location", "$firebase", "RoomHelper", function($scope, $location, $firebase, RoomHelper) {
+    .controller("LandingCtrl", ["$rootScope", "$scope", "$location", "$firebase", "RoomHelper", function($rootScope, $scope, $location, $firebase, RoomHelper) {
       
       $scope.joinRoom = function() {
         $location.path("/"+$scope.roomId);
@@ -252,33 +264,58 @@
 
       $scope.newRoom = function() {
         var newRoomId = RoomHelper.generateRoomId();
-        var $fb_newRoom = $firebase(firebase.child('rooms').child(newRoomId));
-        var user = {
-          leader: true,
-          uuid: RoomHelper.generateUserId(),
-          voter: true
-        };
-        $fb_newRoom.$set({users: [user]});
+        var uuid = RoomHelper.generateUserId();
+        var leader = true;
+        RoomHelper.newUser(newRoomId, uuid, leader);
+        $rootScope.uuid = uuid;
         $location.path("/"+newRoomId);
       };
     }])
 
-    .controller("RoomCtrl", ["$scope", "$routeParams", "$location", "RoomHelper", function($scope, $routeParams, $location, RoomHelper) {
+    .controller("RoomCtrl", ["$rootScope", "$scope", "$routeParams", "$location", "RoomHelper", function($rootScope, $scope, $routeParams, $location, RoomHelper) {
       
       $scope.changeDeck = function() {
         $scope.selectedDeck = CardDecks[$scope.selectedDeckIndex].cards;
       };
 
       var roomId = $routeParams.roomId;
+      var uuid = $rootScope.uuid;
       RoomHelper.checkIfRoomExists(roomId).then(function(exists) {
         if (exists) {
           $scope.room = RoomHelper.getRoom(roomId);
+          if (!uuid) {
+            uuid = RoomHelper.generateUserId();
+            var leader = false;
+            RoomHelper.newUser(roomId, uuid, leader);
+          }
+          $scope.user = RoomHelper.getUser(roomId, uuid);
           $scope.cardDecks = CardDecks;
           $scope.selectedDeckIndex = 0;
           $scope.selectedDeck = CardDecks[$scope.selectedDeckIndex].cards;
         } else {
           $location.path("/");
         }
+      });
+
+      function tearDown() {
+        if ($scope.user.leader) {
+          firebase.child('rooms').child($scope.room.$id).remove();
+        } else {
+          firebase.child('rooms').child($scope.room.$id).child('users').child($scope.user.$id).remove();
+        }
+        $rootScope.uuid = null;
+      }
+
+      $scope.$on('$locationChangeStart', function(event, newUrl, oldUrl) {
+        tearDown();
+      });
+
+      window.onbeforeunload = function (event) {
+        tearDown();
+      };
+
+      $scope.$on('$destroy', function() {
+        delete window.onbeforeunload;
       });
     }]);
 
