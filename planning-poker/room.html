@@ -1,5 +1,16 @@
 <md-content>
 	<section layout="row" layout-sm="column" layout-align="center center">
-		<h1>Room {{room.roomId}}</h1>
+		<h1>Room {{room.$id}}</h1>
+	</section>
+	<section layout="row" layout-sm="column" layout-align="center center">
+		<p>Choose a Card Deck:</p>
+		<md-radio-group ng-model="selectedDeckIndex" ng-change="changeDeck()">
+			<md-radio-button ng-repeat="deck in cardDecks" ng-value="$index" aria-label="{{ deck.name }}">
+				{{ deck.name }}
+			</md-radio-button>
+		</mg-radio-group>
+	</section>
+	<section layout="row" layout-sm="column" layout-align="center center">
+		<p ng-repeat="card in selectedDeck"> [{{ card.text }}] </p>
 	</section>
 </md-content>
