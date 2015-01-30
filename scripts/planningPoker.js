@@ -247,6 +247,12 @@
           return $firebase(ref).$asObject();
         },
 
+        newRoom: function(roomId, deckIndex) {
+          $firebase(firebase.child('rooms').child(roomId)).$set({
+            deckIndex: deckIndex
+          });
+        },
+
         newUser: function(roomId, uuid, leader) {
           $firebase(firebase.child('rooms').child(roomId).child('users').child(uuid)).$set({
             leader: leader,
@@ -264,6 +270,8 @@
 
       $scope.newRoom = function() {
         var newRoomId = RoomHelper.generateRoomId();
+        var defaultDeckIndex = 0;
+        RoomHelper.newRoom(newRoomId, defaultDeckIndex);
         var uuid = RoomHelper.generateUserId();
         var leader = true;
         RoomHelper.newUser(newRoomId, uuid, leader);
@@ -275,8 +283,16 @@
     .controller("RoomCtrl", ["$rootScope", "$scope", "$routeParams", "$location", "RoomHelper", function($rootScope, $scope, $routeParams, $location, RoomHelper) {
       
       $scope.changeDeck = function() {
-        $scope.selectedDeck = CardDecks[$scope.selectedDeckIndex].cards;
+        $scope.room.$save();
       };
+
+      $scope.toggleVoter = function() {
+        $scope.user.$save();
+      };
+
+      $scope.$watch("room.deckIndex", function() {
+        $scope.selectedDeck = CardDecks[$scope.room.deckIndex].cards;
+      });
 
       var roomId = $routeParams.roomId;
       var uuid = $rootScope.uuid;
@@ -312,6 +328,7 @@
 
       window.onbeforeunload = function (event) {
         tearDown();
+
       };
 
       $scope.$on('$destroy', function() {
