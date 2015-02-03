@@ -11,7 +11,7 @@
 		</mg-radio-group>
 	</section>
 	<section layout="row" layout-align="center center" layout-wrap>
-		<md-card ng-repeat="card in selectedDeck" ng-class="{ 'selected': card.val == user.vote }" class="card-choice" ng-click="chooseCard(card.val, card.text)">
+		<md-card ng-repeat="card in selectedDeck" ng-class="{ 'selected': card.val == user.vote.val }" class="card-choice" ng-click="chooseCard(card.val, card.text)">
 			<md-card-content>
 				<p>{{ card.text }}</p>
 			</md-card-content>
@@ -24,14 +24,21 @@
 		</md-checkbox>
 	</section>
 	<section layout="row" layout-align="center center" layout-wrap>
-		<md-card ng-repeat="roomUser in room.users">
+		<md-card ng-repeat="roomUser in room.users" ng-show="roomUser.voter">
 			<md-card-content>
-				<p>{{roomUser.vote.text}}</p>
+				<p ng-show="room.reveal">
+					<span ng-show="roomUser.vote">{{roomUser.vote.text}}</span>
+					<span ng-hide="roomUser.vote">&nbsp;</span>
+				</p>
+				<p ng-hide="room.reveal">
+					<span ng-show="roomUser.vote">X</span>
+					<span ng-hide="roomUser.vote">&nbsp;</span>
+				</p>
 			</md-card-content>
 		</md-card>
 	</section>
 	<section ng-show="user.leader" layout="row" layout-sm="column" layout-align="center center">
-		<md-button class="md-primary md-raised" ng-click=""><i class="fa fa-search"></i> Reveal</md-button>
-		<md-button class="md-raised" ng-click="resetVotes()"><i class="fa fa-undo"></i> Reset</md-button>
+		<md-button class="md-primary md-raised" ng-click="reveal()"><i class="fa fa-search"></i> Reveal</md-button>
+		<md-button class="md-raised" ng-click="reset()"><i class="fa fa-undo"></i> Reset</md-button>
 	</section>
 </md-content>

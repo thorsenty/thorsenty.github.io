@@ -249,7 +249,8 @@
 
         newRoom: function(roomId, deckIndex) {
           $firebase(firebase.child('rooms').child(roomId)).$set({
-            deckIndex: deckIndex
+            deckIndex: deckIndex,
+            reveal: false
           });
         },
 
@@ -284,21 +285,27 @@
     .controller("RoomCtrl", ["$rootScope", "$scope", "$routeParams", "$location", "RoomHelper", function($rootScope, $scope, $routeParams, $location, RoomHelper) {
       
       $scope.changeDeck = function() {
+        resetVotes();
         $scope.room.$save();
       };
 
       $scope.chooseCard = function(cardVal, cardText) {
-        $scope.user.vote = {
-          text: cardText,
-          val: cardVal
-        };
-        $scope.user.$save();
+        if ($scope.user.voter) {
+          $scope.user.vote = {
+            text: cardText,
+            val: cardVal
+          };
+          $scope.user.$save();
+        }
       };
 
-      $scope.resetVotes = function() {
-        for (var user in $scope.room.users) {
-          $scope.room.users[user].vote = null;
-        }
+      $scope.reset = function() {
+        resetVotes();
+        $scope.room.$save();
+      };
+
+      $scope.reveal = function() {
+        $scope.room.reveal = true;
         $scope.room.$save();
       };
 
@@ -328,6 +335,13 @@
           $location.path("/");
         }
       });
+
+      function resetVotes() {
+        for (var user in $scope.room.users) {
+          $scope.room.users[user].vote = null;
+        }
+        $scope.room.reveal = false;
+      }
 
       function tearDown() {
         if ($scope.user.leader) {
