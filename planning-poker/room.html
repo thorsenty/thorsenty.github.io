@@ -10,8 +10,12 @@
 			</md-radio-button>
 		</mg-radio-group>
 	</section>
-	<section layout="row" layout-sm="column" layout-align="center center">
-		<p ng-repeat="card in selectedDeck"> [{{ card.text }}] </p>
+	<section layout="row" layout-align="center center" layout-wrap>
+		<md-card ng-repeat="card in selectedDeck">
+			<md-card-content >
+				<p>[{{ card.text }}]</p>
+			</md-card-content>
+		</md-card>
 	</section>
 	<section layout="row" layout-sm="column" layout-align="center center">
 		<md-checkbox ng-model="user.voter" ng-change="toggleVoter()" aria-label="User is Voter">

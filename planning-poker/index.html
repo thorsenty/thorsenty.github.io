@@ -2,4 +2,15 @@
 layout: angular
 title: Planning Poker
 ---
-<div ng-view></div>
+<div layout-fill>
+	<md-toolbar md-scroll-shrink >
+  	<div class="md-toolbar-tools">
+  		<section layout="row" layout-align="space-between center" layout-fill>
+    		<h3>
+      		<span>Planning Poker</span>
+    		</h3>
+    	</section>
+  	</div>
+	</md-toolbar>
+	<div ng-view></div>
+</div>
