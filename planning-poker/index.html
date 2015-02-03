@@ -9,18 +9,18 @@ styles:
   - href: //maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css
   - href: /styles/dist/planning-poker.css
 ---
-<div layout-fill>
+<div class="planning-poker" layout-fill>
 	<md-toolbar md-scroll-shrink >
-  	<div class="md-toolbar-tools">
-  		<section layout="row" layout-align="space-between center" layout-fill>
-    		<a class="logo" href="/">
-          <img src="/assets/images/hammer_logo_light_o.png" alt="Thorsent Home" title="Thorsent Home"/>
-        </a>
-        <h3>
-      		<span>Planning Poker</span>
-    		</h3>
-    	</section>
-  	</div>
+    <h1 class="md-toolbar-tools">
+      <span flex>Planning Poker</span>
+      <md-button class="md-fab md-primary" aria-label="Thorsent Home">
+        <md-tooltip>
+          Thorsent Home
+        </md-tooltip>
+        <md-icon icon="/assets/images/hammer_logo_light_o.png" style="width: 24px; height: 24px;">
+        </md-icon>
+      </md-button>
+    </h1>
 	</md-toolbar>
 	<div ng-view></div>
 </div>
