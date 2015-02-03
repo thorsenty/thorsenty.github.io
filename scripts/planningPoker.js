@@ -55,7 +55,7 @@
         },
         {
           text: "Cafe",
-          val: -1
+          val: -2
         }
       ]
     },
@@ -256,6 +256,7 @@
         newUser: function(roomId, uuid, leader) {
           $firebase(firebase.child('rooms').child(roomId).child('users').child(uuid)).$set({
             leader: leader,
+            vote: null,
             voter: true
           });
         }
@@ -283,6 +284,21 @@
     .controller("RoomCtrl", ["$rootScope", "$scope", "$routeParams", "$location", "RoomHelper", function($rootScope, $scope, $routeParams, $location, RoomHelper) {
       
       $scope.changeDeck = function() {
+        $scope.room.$save();
+      };
+
+      $scope.chooseCard = function(cardVal, cardText) {
+        $scope.user.vote = {
+          text: cardText,
+          val: cardVal
+        };
+        $scope.user.$save();
+      };
+
+      $scope.resetVotes = function() {
+        for (var user in $scope.room.users) {
+          $scope.room.users[user].vote = null;
+        }
         $scope.room.$save();
       };
 

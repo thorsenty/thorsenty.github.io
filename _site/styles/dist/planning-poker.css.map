@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAEC,qBAAW,CACV,UAAU,CAAE,OAAO,CAGpB,kBAAQ,CACP,MAAM,CAAE,OAAO,CACf,UAAU,CAAE,OAAO",
+"sources": ["../planning-poker.scss"],
 "names": [],
 "file": "planning-poker.css"
 }

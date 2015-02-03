@@ -1,0 +1,11 @@
+.card-choice {
+
+	&.selected {
+		background: #D7D7D7;
+	}
+
+	&:hover {
+		cursor: pointer;
+		background: #F7F7F7;
+	}
+}
