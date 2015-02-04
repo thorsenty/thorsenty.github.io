@@ -54,8 +54,9 @@
           val: -1
         },
         {
-          text: "Cafe",
-          val: -2
+          text: "coffee",
+          val: -2,
+          fa: "coffee"
         }
       ]
     },
@@ -289,11 +290,12 @@
         $scope.room.$save();
       };
 
-      $scope.chooseCard = function(cardVal, cardText) {
+      $scope.chooseCard = function(cardVal, cardText, cardFA) {
         if ($scope.user.voter) {
           $scope.user.vote = {
+            val: cardVal,
             text: cardText,
-            val: cardVal
+            fa: cardFA || "" 
           };
           $scope.user.$save();
         }
