@@ -11,7 +11,7 @@
 		</mg-radio-group>
 	</section>
 	<section layout="row" layout-align="center center" layout-wrap>
-		<md-card ng-repeat="card in selectedDeck" ng-class="{ 'selected': card.val == user.vote.val }" class="card-choice" ng-click="chooseCard(card.val, card.text, card.fa)">
+		<md-card ng-repeat="card in selectedDeck" ng-class="{ 'selected': card.val == user.vote.val }" class="choosable" ng-click="chooseCard(card.val, card.text, card.fa)">
 			<md-card-content>
 				<p>
 					<span ng-show="card.fa"><i class="fa fa-{{ card.fa }}"></i></span>
@@ -27,7 +27,7 @@
 		</md-checkbox>
 	</section>
 	<section layout="row" layout-align="center center" layout-wrap>
-		<md-card ng-repeat="roomUser in room.users" ng-show="roomUser.voter">
+		<md-card ng-repeat="(key, roomUser) in room.users" ng-show="roomUser.voter" ng-class="{ 'no-vote': !roomUser.vote, 'selected': key == user.$id && roomUser.vote }">
 			<md-card-content>
 				<p ng-show="room.reveal">
 					<span ng-show="roomUser.vote">
@@ -37,8 +37,7 @@
 					<span ng-hide="roomUser.vote">&nbsp;</span>
 				</p>
 				<p ng-hide="room.reveal">
-					<span ng-show="roomUser.vote">X</span>
-					<span ng-hide="roomUser.vote">&nbsp;</span>
+					<span>&nbsp;</span>
 				</p>
 			</md-card-content>
 		</md-card>

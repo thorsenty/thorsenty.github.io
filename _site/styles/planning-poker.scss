@@ -6,14 +6,39 @@
   -webkit-transform: none;
 }
 
-.card-choice {
+.planning-poker .thorsent-home md-icon {
+	margin: 10px;
+}
 
-	&.selected {
-		background: #D7D7D7;
+md-card {
+	width: 60px;
+	transition: background-color 0.2s ease, color 0.2s ease;;
+
+	md-card-content {
+		padding: 16px 8px;
+		text-align: center;
+
+		p {
+			overflow: hidden;
+		}
 	}
 
-	&:hover {
+	&.selected {
+		background: #BBDEFB;
+		color: rgba(0,0,0,0.87);
+	}
+
+	&.choosable:hover {
 		cursor: pointer;
-		background: #F7F7F7;
+		background: #2196F3;
+		color: rgba(255,255,255,1);
+	}  
+
+	&.no-vote {
+		box-shadow: none;
+
+		md-card-content {
+			outline: 1px dotted rgba(0,0,0,0.87);
+		}
 	}
 }
