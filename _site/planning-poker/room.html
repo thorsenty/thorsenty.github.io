@@ -1,14 +1,14 @@
 <md-content>
-	<section layout="row" layout-sm="column" layout-align="center center">
+	<section layout="row" layout-sm="column" layout-align="space-around center">
 		<h1>Room: {{ room.$id }}</h1>
-	</section>
-	<section ng-show="user.leader" layout="row" layout-sm="column" layout-align="center center">
-		<p>Choose a Card Deck:</p>
-		<md-radio-group ng-model="room.deckIndex" ng-change="changeDeck()">
-			<md-radio-button ng-repeat="deck in cardDecks" ng-value="$index" aria-label="{{ deck.name }}">
-				{{ deck.name }}
-			</md-radio-button>
-		</mg-radio-group>
+		<section ng-show="user.leader" layout="row" layout-sm="column" layout-align="center center">
+			<p>Choose a Card Deck:</p>
+			<md-radio-group ng-model="room.deckIndex" ng-change="changeDeck()">
+				<md-radio-button ng-repeat="deck in cardDecks" ng-value="$index" aria-label="{{ deck.name }}">
+					{{ deck.name }}
+				</md-radio-button>
+			</mg-radio-group>
+		</section>
 	</section>
 	<section layout="row" layout-align="center center" layout-wrap>
 		<md-card ng-repeat="card in selectedDeck" ng-class="{ 'selected': card.val == user.vote.val }" class="choosable" ng-click="chooseCard(card.val, card.text, card.fa)">
@@ -42,7 +42,7 @@
 			</md-card-content>
 		</md-card>
 	</section>
-	<section ng-show="user.leader" layout="row" layout-sm="column" layout-align="center center">
+	<section class="leader-actions" ng-show="user.leader" layout="row" layout-align="center center" layout-wrap>
 		<md-button class="md-primary md-raised" ng-click="reveal()"><i class="fa fa-search"></i> Reveal</md-button>
 		<md-button class="md-raised" ng-click="reset()"><i class="fa fa-undo"></i> Reset</md-button>
 	</section>
