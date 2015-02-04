@@ -4,6 +4,8 @@ title: Planning Poker
 scripts:
   - src: //cdn.firebase.com/js/client/2.0.4/firebase.js
   - src: //cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js
+  - src: /scripts/dist/Thorsent.min.js
+  - src: /scripts/data/Thorsent.PlanningPoker.Decks.js
   - src: /scripts/dist/planningPoker.min.js
 styles:
   - href: //maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css
@@ -12,7 +14,7 @@ styles:
 <div class="planning-poker" layout-fill>
 	<md-toolbar>
     <h1 class="md-toolbar-tools">
-      <span flex>Planning Poker {{ roomNumber }}</span>
+      <span flex>Planning Poker (Beta)</span>
       <md-button href="/" class="md-fab md-primary thorsent-home" aria-label="Thorsent Home">
         <md-tooltip>
           Thorsent Home
