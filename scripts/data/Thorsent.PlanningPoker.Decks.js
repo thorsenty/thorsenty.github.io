@@ -112,6 +112,11 @@
 	        {
 	          text: "?",
 	          val: -1
+	        },
+	        {
+	          text: "coffee",
+	          val: -2,
+	          fa: "coffee"
 	        }
 	      ]
 	    },
@@ -165,6 +170,11 @@
 	        {
 	          text: "?",
 	          val: -1
+	        },
+	        {
+	          text: "coffee",
+	          val: -2,
+	          fa: "coffee"
 	        }
 	      ]
 	    },
@@ -194,6 +204,11 @@
 	        {
 	          text: "?",
 	          val: -1
+	        },
+	        {
+	          text: "coffee",
+	          val: -2,
+	          fa: "coffee"
 	        }
 	      ]
 	    }
