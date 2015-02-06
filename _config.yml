@@ -3,4 +3,4 @@ markdown: redcarpet
 pygments: true
 permalink: /blog/:year/:month/:day/:title/
 excerpt_separator: <!--more-->
-exclude: [node_modules, Gruntfile.js, package.json]
+exclude: [node_modules, Gruntfile.js, package.json, karma.conf.js, tests]

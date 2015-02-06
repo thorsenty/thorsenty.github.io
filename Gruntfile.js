@@ -17,6 +17,12 @@ module.exports = function(grunt) {
       all: ['scripts/*.js']
     },
 
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    },
+
     sass: {
       dev: {
         files: [{
@@ -74,8 +80,8 @@ module.exports = function(grunt) {
         tasks: ['sass:dev', 'shell:jekyllBuild']
       },
       js: {
-        files: ['scripts/*.js'],
-        tasks: [ 'jshint', 'uglify', 'shell:jekyllBuild']
+        files: ['scripts/*.js', 'scripts/data/*.js', 'scripts/tests/*.js'],
+        tasks: [ 'jshint', 'karma', 'uglify', 'shell:jekyllBuild']
       },
       site: {
         files: ['**/*.html', '!_site/**/*.html', '_posts/**/*.md', '_drafts/**/*.md'],
@@ -89,8 +95,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('default', ['jshint', 'uglify', 'sass:dev', 'shell:jekyllBuild', 'watch']);
-  grunt.registerTask('prod', ['uglify', 'jshint', 'sass:dist', 'shell:jekyllBuildProd']);
+  grunt.registerTask('default', ['jshint', 'karma', 'uglify', 'sass:dev', 'shell:jekyllBuild', 'watch']);
+  grunt.registerTask('prod', ['jshint', 'karma', 'uglify', 'sass:dist', 'shell:jekyllBuildProd']);
   grunt.registerTask('serve', ['shell:jekyllServe']);
 };
