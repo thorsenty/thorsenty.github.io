@@ -10,11 +10,11 @@
       $routeProvider
         .when('/', {
           controller: 'LandingCtrl',
-          templateUrl: '/planning-poker/landing.html'
+          templateUrl: '/planning-poker-temp/landing.html'
         })
         .when('/:roomId/', {
           controller: 'RoomCtrl',
-          templateUrl: '/planning-poker/room.html'
+          templateUrl: '/planning-poker-temp/room.html'
         })
         .otherwise({
           redirectTo: '/'
