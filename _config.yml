@@ -1,6 +1,6 @@
 name: thorsent
 markdown: redcarpet
-pygments: true
+highlighter: true
 permalink: /blog/:year/:month/:day/:title/
 excerpt_separator: <!--more-->
-exclude: [node_modules, Gruntfile.js, package.json, karma.conf.js, tests, README.md]
+exclude: [node_modules, Gruntfile.js, package.json, karma.conf.js, scripts/tests, README.md]
