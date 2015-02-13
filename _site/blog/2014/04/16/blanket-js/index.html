@@ -55,10 +55,10 @@
 
 <p>So, back to the issue of testing code coverage. After a quick search, it was evident that <a href="http://blanketjs.org">BlanketJS</a> would be the best tool for the job. It&#39;s easy to use, configurable, and supports QUnit integration out-of-the-box.</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/main.js&quot; data-cover&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;/js/qunit-1.14.0.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;/js/testSuite.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;/js/blanket.min.js&quot;&gt;&lt;/script&gt;</code></pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/js/main.js&quot;</span> <span class="na">data-cover</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/js/qunit-1.14.0.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/js/testSuite.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/js/blanket.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
 <p>To get started with BlanketJS in your project, all you need to do is include the blanket.min.js script after your qunit script, and then mark any scripts for which you want to test your test coverage with a <code>data-cover</code> attribute.</p>
 

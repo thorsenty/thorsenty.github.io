@@ -54,7 +54,7 @@
 <ol>
 <li><p>Find and register a domain name. I used GoDaddy, but the registrar you use is really up to you. </p></li>
 <li><p>Add a file called <code>CNAME</code> to the root of your Page repository. This file should contain a single line, listing your custom domain. 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">www.thorsent.com</code></pre></div></p></li>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="nx">www</span><span class="p">.</span><span class="nx">thorsent</span><span class="p">.</span><span class="nx">com</span></code></pre></div></p></li>
 <li><p>Log in to your GoDaddy account. Navigate to the &#39;Domains&#39; screen.  There is a &#39;DNS&#39; drop-down menu. Select &#39;DNS Manager&#39;. Once in the DNS Manager you should see your custom domain name. Select &#39;Edit Zone&#39; to open up the zone file editor. In the DNS Zone Editor you need to ensure that you have three records: two &#39;A&#39; (Host) records that point to the GitHub Pages servers at 192.30.252.153 and 192.30.252.154, and a &#39;CNAME&#39; (Alias) record that points to your GitHub Pages url (username.github.io).</p></li>
 <li><p>Profit.</p></li>
 </ol>
