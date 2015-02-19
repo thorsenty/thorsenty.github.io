@@ -1,0 +1,61 @@
+.post {
+  background: #FFF;
+
+  h2 {
+    font-size: 2em;
+    line-height: 1.5em;
+    font-weight: normal;
+    text-align: left;
+  }
+
+  p {
+    margin: 0.8em 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  pre {
+    border: 1px solid #ddd;
+    background-color: #eef;
+    padding: 0 .4em;
+
+    code {
+      border: none;
+    }
+  }
+
+  ul, ol {
+    margin-left: 1.35em;
+  }
+
+  code {
+    border: 1px solid #ddd;
+    background-color: #eef;
+    padding: 0 .2em;
+  }
+
+  pre.terminal {
+    border: 1px solid #000;
+    background-color: #333;
+    color: #FFF;
+
+    code {
+      background-color: #333;
+    }
+  }
+
+  .meta {
+	color: #aaa;
+  }
+}
+
+.post-container {
+
+	@media screen and (min-width: 60em) {
+		width: 50%;
+		float: left;
+	}
+}

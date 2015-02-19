@@ -1,4 +1,4 @@
-(function(window, undefined) {
+(function(window, $, undefined) {
   "use strict";
  
   if (!window.namespace) {
@@ -27,4 +27,20 @@
       return arguments[0];
     };
   }
-})(window);
+
+  var Thorsent = namespace("Thorsent");
+  extend(Thorsent, {});
+
+  function highlightCurrentPage() {
+    $(".navbar li a[href='" + location.pathname + "']").closest('li').addClass("active");
+  }
+
+  function init() {
+    highlightCurrentPage();
+  }
+
+  $(document).on("ready", function() {
+    init();
+  });
+
+})(window, window.jQuery);

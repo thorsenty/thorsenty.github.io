@@ -15,6 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+        'scripts/vendor/jquery-2.1.3.min.js',
         'scripts/Thorsent.js',
         'scripts/tests/Thorsent.Tests.js'
     ],
