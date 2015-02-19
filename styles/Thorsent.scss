@@ -1,3 +1,4 @@
+@import 'partials/paper/variables';
 @import 'partials/common/cards';
 @import 'partials/common/posts';
 
@@ -6,11 +7,24 @@ body {
 	background: #F7F7F7;
 }
 
+.banner {
+	margin-top: -20px;
+}
+
 .section {
 	padding: 3em 0;
 }
 
 .projects {
-	background: #2196F3;
+	background: $gray-dark;
 	color: #FFF;
+
+	h1 {
+		color: #FFF;
+	}
+}
+
+.project {
+	background: $gray-darker;
+	margin: 2em 0.5em;
 }

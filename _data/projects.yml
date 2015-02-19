@@ -1,0 +1,5 @@
+- name: "Planning Poker"
+  url: "/planning-poker/"
+
+- name: "Ulti Ipsum"
+  url: "/ulti-ipsum/"

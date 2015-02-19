@@ -2,9 +2,19 @@
 layout: default
 title: Home
 ---
+<div class="banner">
+  <img src="/assets/images/banner.jpg" class="img-responsive"/>
+</div>
 <div class="projects section">
   <div class="container">
     <h1>Projects</h1>
+    {% for project in site.data.projects %}
+      <div class="project card card-2">
+        <div class="card-content">
+          <h2><a href="{{ project.url }}">{{ project.name }}</a></h2>
+        </div>
+      </div>
+    {% endfor %}
   </div>
 </div>
 <div class="posts section">
