@@ -45,12 +45,16 @@
         </div>
       </nav>
       <div class="content">
-        <div class="container">
+        <div class="posts section main">
+  <div class="container-fluid">
     <div class="post feature card card-2">
-        <div class="card-content">
-        	<h2>BlanketJS for QUnit</h2>
-        	<p class="meta">Posted on 16 Apr 2014 by Ty Thorsen</p>
-        	<p>&#39;What is the benefit?&#39; </p>
+      
+        <img src="/assets/images/posts/default_cover.png" class="cover"/>
+      
+      <div class="card-content">
+        <h2>BlanketJS for QUnit</h2>
+        <p class="meta">Posted on 16 Apr 2014 by Ty Thorsen</p>
+        <p>&#39;What is the benefit?&#39; </p>
 
 <p>This question was posed to me by a project manager today, regarding the QUnit testing framework that several colleagues and I have been building over the past few weeks. I gave him the typical spiel about how the test suite would help ensure code stablity, how the process of writing the test suite (and refactoring along the way) would reduce current technical debt, and how we could leverage the framework to do TDD in the future. That all sounds great, of course, but we need something we can show the business to help them understand that these benefits are worth the cost.</p>
 
@@ -71,21 +75,22 @@
 
 <p>I&#39;m getting aquainted with BlanketJS by adding it to thorsent. If I visit my qunit page, I should now see an additional checkbox in the toolbar labeled &#39;Enable coverage&#39;. Check this box, and the page will reload, resulting in a view similar to the one above. BlanketJS has appended the coverage results to the qunit markup. It shows the number of statements covered out of the total number of statements in the JS, and this same metric as a percentage. If you&#39;d like to drill down into your code to see exactly which statements in each file are covered and which ones aren&#39;t, you can do that too. At 44% I&#39;m not doing so hot. But, now I know, and I can see a tangible improvement as I continue developing my test suite.</p>
 
-        	<div id="disqus_thread"></div>
-            <script type="text/javascript">
-                var disqus_shortname = 'thorsent';
-                var disqus_identifier = document.getElementById("page-url").value;
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        var disqus_shortname = 'thorsent';
+        var disqus_identifier = document.getElementById("page-url").value;
 
-                (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
     </div>
+  </div>
 </div>
       </div>
       <div class="footer">

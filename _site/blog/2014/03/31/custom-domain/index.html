@@ -45,12 +45,16 @@
         </div>
       </nav>
       <div class="content">
-        <div class="container">
+        <div class="posts section main">
+  <div class="container-fluid">
     <div class="post feature card card-2">
-        <div class="card-content">
-        	<h2>A Custom Domain for Your GitHub Pages Site Using GoDaddy</h2>
-        	<p class="meta">Posted on 31 Mar 2014 by Ty Thorsen</p>
-        	<p>A quick note on how to set up a custom domain name for your GitHub Pages site using GoDaddy:</p>
+      
+        <img src="/assets/images/posts/default_cover.png" class="cover"/>
+      
+      <div class="card-content">
+        <h2>A Custom Domain for Your GitHub Pages Site Using GoDaddy</h2>
+        <p class="meta">Posted on 31 Mar 2014 by Ty Thorsen</p>
+        <p>A quick note on how to set up a custom domain name for your GitHub Pages site using GoDaddy:</p>
 
 <p>Setting up my custom domain for thorsent was my first foray into working with DNS. I stumbled around a bit with forwarding and masking before arriving at the proper solution of DNS mapping. It&#39;s a fairly simple process if you know what you&#39;re looking for. Just follow the steps below.</p>
 
@@ -68,21 +72,22 @@
 
 <p>After allowing some time to allow your DNS changes to propagate (up to 24 hours), your custom domain should now be pointed at your GitHub Pages site.</p>
 
-        	<div id="disqus_thread"></div>
-            <script type="text/javascript">
-                var disqus_shortname = 'thorsent';
-                var disqus_identifier = document.getElementById("page-url").value;
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        var disqus_shortname = 'thorsent';
+        var disqus_identifier = document.getElementById("page-url").value;
 
-                (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
     </div>
+  </div>
 </div>
       </div>
       <div class="footer">

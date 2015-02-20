@@ -34,6 +34,10 @@ body {
 
 .section {
 	padding: 3em 0;
+
+	&.main {
+		padding-top: 0;
+	}
 }
 
 .projects {
