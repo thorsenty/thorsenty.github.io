@@ -3,12 +3,28 @@
 @import 'partials/common/posts';
 
 body {
-	padding-top: 70px;
+	padding-top: 87px;
 	background: #F7F7F7;
 }
 
+.navbar-brand {
+
+	> img {
+		display: inline-block;
+		margin-top: -3px;
+		opacity: 0.65;
+		-webkit-transition: all 0.2s;
+		     -o-transition: all 0.2s;
+	 	        transition: all 0.2s;
+	}
+
+	&:hover > img  {
+		opacity: 1;
+	}
+}
+
 .banner {
-	margin-top: -20px;
+	margin-top: -23px;
 }
 
 .section {
