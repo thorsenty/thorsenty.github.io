@@ -1,7 +1,10 @@
 .post {
   background: #FFF;
+  text-align: justify;
+  margin-bottom: 1em;
 
   h2 {
+  	margin: 0;
     font-size: 2em;
     line-height: 1.5em;
     font-weight: normal;
@@ -15,6 +18,11 @@
   img {
     max-width: 100%;
     height: auto;
+
+    &.cover {
+      float: left;
+      margin: 1em;
+    }
   }
 
   pre {
@@ -48,14 +56,32 @@
   }
 
   .meta {
+  	margin-top: 0;
 	color: #aaa;
+	text-align: left;
+  }
+
+  .card-content {
+  	padding: 1em 2em 1em 359px;
+  }
+
+  &.feature {
+  	img.cover {
+  		width: 100%;
+  		height: auto;
+  		float: none;
+  		margin: 0;
+  	}
+
+  	.card-content {
+  		margin: -4em 2em 0;
+  		background: #FFF;
+  		position: relative;
+  		padding-left: 2em;
+  	}
   }
 }
 
-.post-container {
-
-	@media screen and (min-width: 60em) {
-		width: 50%;
-		float: left;
-	}
+.posts .btn {
+	margin: 1em 0 0 0.5em;
 }

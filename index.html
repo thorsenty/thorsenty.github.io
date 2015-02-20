@@ -4,6 +4,11 @@ title: Thorsent
 ---
 <div class="banner">
   <img src="/assets/images/banner.jpg" class="img-responsive"/>
+  <div class="section">
+    <div class="container">
+      <h1>Thorsent</h1>
+    </div>
+  </div>
 </div>
 <div class="projects section">
   <div class="container">
@@ -23,6 +28,7 @@ title: Thorsent
     <div class="clearfix">
       {% for post in site.posts limit: 1 %}
         <div class="post feature card card-2">
+          <img src="{{post.cover}}" class="cover"/>
           <div class="card-content">
             <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
             <p class="meta">Posted on {{ post.date | date_to_string }} by {{ post.author }}</p>
@@ -32,10 +38,13 @@ title: Thorsent
         </div>
       {% endfor %}
       {% for post in site.posts offset: 1 limit: 2 %}
-      <div class="post card card-2">
+      <div class="post card card-2 clearfix">
+        <img src="/assets/images/posts/grunt_cover_sm.png" class="cover"/>
         <div class="card-content">
           <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
           <p class="meta">Posted on {{ post.date | date_to_string }} by {{ post.author }}</p>
+          {{ post.excerpt }}
+          <p><a href="{{ post.url }}">read more</a></p>
         </div>
       </div>
       {% endfor %}
