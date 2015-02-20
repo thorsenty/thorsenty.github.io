@@ -5,13 +5,13 @@ title: Thorsent
 <div class="banner">
   <img src="/assets/images/banner.jpg" class="img-responsive"/>
   <div class="section">
-    <div class="container">
+    <div class="container-fluid">
       <h1>Thorsent</h1>
     </div>
   </div>
 </div>
 <div class="projects section">
-  <div class="container">
+  <div class="container-fluid">
     <h1>Projects</h1>
     {% for project in site.data.projects %}
       <div class="project card card-2">
@@ -23,13 +23,19 @@ title: Thorsent
   </div>
 </div>
 <div class="posts section">
-  <div class="container">
+  <div class="container-fluid">
     <h1>Recent Blog Posts</h1>
     <div class="clearfix">
       {% for post in site.posts limit: 1 %}
         <div class="post feature card card-2">
-          <img src="{{post.cover}}" class="cover"/>
-          <div class="card-content">
+          <a href="{{ post.url }}">
+            {% if post.cover %}
+              <img src="{{ post.cover }}.png" class="cover"/>
+            {% else %}
+              <img src="/assets/images/posts/default_cover.png" class="cover"/>
+            {% endif %}
+          </a>
+          <div class="card-content card card-2">
             <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
             <p class="meta">Posted on {{ post.date | date_to_string }} by {{ post.author }}</p>
             {{ post.excerpt }}
@@ -39,7 +45,13 @@ title: Thorsent
       {% endfor %}
       {% for post in site.posts offset: 1 limit: 2 %}
       <div class="post card card-2 clearfix">
-        <img src="/assets/images/posts/grunt_cover_sm.png" class="cover"/>
+        <a href="{{ post.url }}">
+          {% if post.cover %}
+            <img src="{{ post.cover }}_sm.png" class="cover"/>
+          {% else %}
+            <img src="/assets/images/posts/default_cover_sm.png" class="cover"/>
+          {% endif %}
+        </a>
         <div class="card-content">
           <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
           <p class="meta">Posted on {{ post.date | date_to_string }} by {{ post.author }}</p>

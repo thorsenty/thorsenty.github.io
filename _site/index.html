@@ -13,7 +13,7 @@
     <body>
       <input id="page-url" type="hidden" value="/index.html">
       <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -48,13 +48,13 @@
         <div class="banner">
   <img src="/assets/images/banner.jpg" class="img-responsive"/>
   <div class="section">
-    <div class="container">
+    <div class="container-fluid">
       <h1>Thorsent</h1>
     </div>
   </div>
 </div>
 <div class="projects section">
-  <div class="container">
+  <div class="container-fluid">
     <h1>Projects</h1>
     
       <div class="project card card-2">
@@ -72,13 +72,17 @@
   </div>
 </div>
 <div class="posts section">
-  <div class="container">
+  <div class="container-fluid">
     <h1>Recent Blog Posts</h1>
     <div class="clearfix">
       
         <div class="post feature card card-2">
-          <img src="/assets/images/posts/grunt_cover.png" class="cover"/>
-          <div class="card-content">
+          <a href="/blog/2014/10/09/grunt/">
+            
+              <img src="/assets/images/posts/grunt_cover.png" class="cover"/>
+            
+          </a>
+          <div class="card-content card card-2">
             <h2><a href="/blog/2014/10/09/grunt/">Grunt 101: Automating the Boring (but Useful) Stuff</a></h2>
             <p class="meta">Posted on 09 Oct 2014 by Ty Thorsen</p>
             <p>I was looking through the screencasts on <a href="http://css-tricks.com">CSS-Tricks</a> the other day, and I noticed a couple of recent videos on how to use Grunt to automate various development tasks. Now, as a developer who does tasks every now and then, this seemed likes something that could be helpful. In this post I&#39;ll talk briefly about how to get started with Grunt and show you how I&#39;m starting to use it to build this site.</p>
@@ -89,7 +93,11 @@
       
       
       <div class="post card card-2 clearfix">
-        <img src="/assets/images/posts/grunt_cover_sm.png" class="cover"/>
+        <a href="/blog/2014/04/16/blanket-js/">
+          
+            <img src="/assets/images/posts/default_cover_sm.png" class="cover"/>
+          
+        </a>
         <div class="card-content">
           <h2><a href="/blog/2014/04/16/blanket-js/">BlanketJS for QUnit</a></h2>
           <p class="meta">Posted on 16 Apr 2014 by Ty Thorsen</p>
@@ -102,7 +110,11 @@
       </div>
       
       <div class="post card card-2 clearfix">
-        <img src="/assets/images/posts/grunt_cover_sm.png" class="cover"/>
+        <a href="/blog/2014/03/31/custom-domain/">
+          
+            <img src="/assets/images/posts/default_cover_sm.png" class="cover"/>
+          
+        </a>
         <div class="card-content">
           <h2><a href="/blog/2014/03/31/custom-domain/">A Custom Domain for Your GitHub Pages Site Using GoDaddy</a></h2>
           <p class="meta">Posted on 31 Mar 2014 by Ty Thorsen</p>
@@ -120,7 +132,7 @@
 </div>
       </div>
       <div class="footer">
-        <div class="container">
+        <div class="container-fluid">
           <p>&copy;2015 Ty Thorsen, all rights reserved.</p>
         </div>
       </div>
