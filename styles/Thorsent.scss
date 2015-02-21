@@ -1,5 +1,4 @@
 @import 'partials/paper/variables';
-@import 'partials/common/cards';
 @import 'partials/common/posts';
 
 body {
@@ -43,6 +42,11 @@ body {
 .projects {
 	background: $gray-dark;
 	color: #FFF;
+
+	img {
+		width: 100%;
+		height: auto;
+	}
 
 	h1 {
 		color: #FFF;

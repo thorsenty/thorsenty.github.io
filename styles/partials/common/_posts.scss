@@ -26,7 +26,7 @@
     &.cover {
       display: none;
 
-      @media screen and (min-width: 60em) {
+      @media screen and (min-width: 62em) {
       	display: block;
       	float: left;
       	margin: 1em;
@@ -73,14 +73,14 @@
   .card-content {
   	padding: 1em 2em;
 
-  	@media screen and (min-width: 60em) {
+  	@media screen and (min-width: 62em) {
   		padding: 1em 2em 1em 359px;
   	}
   }
 
   &.feature {
 
-  	@media screen and (min-width: 60em) {
+  	@media screen and (min-width: 62em) {
   		padding-bottom: 1em;
   		background: transparent;
   	}
@@ -99,7 +99,7 @@
   		margin: 0;
   		box-shadow: none;
 
-  		@media screen and (min-width: 60em) {
+  		@media screen and (min-width: 62em) {
 	  		margin: -4em 2em 0;
 	  		background: #FFF;
 	  		position: relative;

@@ -6,20 +6,26 @@ title: Thorsent
   <img src="/assets/images/banner.jpg" class="img-responsive"/>
   <div class="section">
     <div class="container-fluid">
-      <h1>Thorsent</h1>
     </div>
   </div>
 </div>
 <div class="projects section">
   <div class="container-fluid">
     <h1>Projects</h1>
-    {% for project in site.data.projects %}
-      <div class="project card card-2">
-        <div class="card-content">
-          <h2><a href="{{ project.url }}">{{ project.name }}</a></h2>
+    <div class="row">
+      {% for project in site.data.projects %}
+        <div class="col-sm-6">
+          <div class="project card card-2 card-hoverable card-hoverable-4">
+            <a href="{{ project.url }}">
+              <img src="/assets/images/posts/default_cover.png"/>
+              <div class="card-content">
+                <h2>{{ project.name }}</h2>
+              </div>
+            </a>
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 <div class="posts section">
