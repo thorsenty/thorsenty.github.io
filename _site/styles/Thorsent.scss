@@ -56,4 +56,17 @@ body {
 .project {
 	background: $gray-darker;
 	margin: 2em 0.5em;
+
+	.card-content {
+		padding: 1em 2em;
+	}
+
+	h2 {
+		color: #FFF;
+	}
+
+	a {
+		color: #FFF;
+		text-decoration: none;
+	}
 }

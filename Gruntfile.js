@@ -84,7 +84,7 @@ module.exports = function(grunt) {
         tasks: [ 'jshint', 'karma', 'uglify', 'shell:jekyllBuild']
       },
       site: {
-        files: ['**/*.html', '!_site/**/*.html', '_posts/**/*.md', '_drafts/**/*.md'],
+        files: ['**/*.html', '!_site/**/*.html', '_posts/**/*.md', '_drafts/**/*.md', '_data/**/*.yml'],
         tasks: ['shell:jekyllBuild']
       }
     }

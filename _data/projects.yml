@@ -1,5 +1,8 @@
 - name: "Planning Poker"
   url: "/planning-poker/"
+  cover: "/assets/images/projects/planning_poker_cover.png"
+  description: "An online agile estimation tool for distributed or colocated project teams."
 
 - name: "Ulti Ipsum"
   url: "/ulti-ipsum/"
+  description: "A lorem ispum filler text generator for the ultimate frisbee enthusiast."
