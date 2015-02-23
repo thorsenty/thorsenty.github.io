@@ -5,4 +5,5 @@
 
 - name: "Ulti Ipsum"
   url: "/ulti-ipsum/"
+  cover: "/assets/images/projects/ulti_ipsum_cover.png"
   description: "A lorem ispum filler text generator for the ultimate frisbee enthusiast."
