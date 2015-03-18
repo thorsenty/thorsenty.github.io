@@ -29,6 +29,32 @@ body {
 .banner {
 	margin-top: -23px;
 	background: #FFF;
+
+
+}
+
+.about {
+	img {
+		border-radius: 50%;
+	}
+
+	.col-sm-4 {
+		text-align: center;
+
+		@media screen and (min-width: 768px) {
+			text-align: right;
+		}
+	}
+
+	h4 {
+		line-height: 1.4em;
+		margin: 1em;
+		text-align: center;
+
+		@media screen and (min-width: 768px) {
+			text-align: left;
+		}
+	}
 }
 
 .section {
